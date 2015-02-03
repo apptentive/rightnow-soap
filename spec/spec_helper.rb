@@ -4,6 +4,7 @@ Bundler.setup
 require 'rightnow'
 require 'webmock/rspec'
 require 'vcr'
+require 'pry'
 
 RSpec.configure do |config|
   # some (optional) config here

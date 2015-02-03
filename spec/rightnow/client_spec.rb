@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe RightNow::Client do
   let(:client) { RightNow::Client.new("https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?wsdl",
