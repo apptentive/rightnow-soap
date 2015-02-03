@@ -29,7 +29,6 @@ class RightNow::Objects::Incident < RightNow::RNObject
             xml[:base].ID(id: primary_contact)
           end
         end
-        # TODO: this is settable in other integrations
         xml[:object].Subject(subject)
         # NOTE: what if there is a nil or blank message sent to Oracle?
         xml[:object].Threads do

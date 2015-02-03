@@ -10,6 +10,19 @@ This library currently only supports:
   - Create
   - Update
 
+## Issues, Questions & ToDos
+
+1. Extract objects into classes
+  - Email, Name, etc
+1. How does Oracle respond if we send a blank/nil Thread message?
+  - Or other fields for that matter
+1. How are we handling an anonymous user?
+  - Normally we create a no-reply@apptentive.com user
+  - We will need to store this user account on the Integration
+    - but what if they change the credentials?
+    - do we clear out the user? then we'd need to find it again
+      - maybe we need a QUERY interface as well for contacts?
+
 ## Contributing to RightNow
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
