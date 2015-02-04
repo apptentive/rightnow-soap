@@ -1,19 +1,29 @@
 require 'spec_helper'
 
 describe RightNow::Objects::Incident do
-  describe '#create_incident' do
-    context 'with valid parameters' do
-      it 'should generate a valid SOAP request body for CREATE'
-    end
-  end
+  describe '#body' do
+    context 'for create' do
+      let(:incident) { RightNow::Objects::Incident.new(contact_id: 1, message: 'new incident') }
 
-  describe '#update_incident' do
-    context 'with valid paramters' do
-      it 'should generate a valid SOAP request body for UPDATE'
+      it 'should contain a contact_id' do
+        expect(incident.body(:create)).to include('1')
+      end
+
+      it 'should contain a new thread' do
+        expect(incident.body(:create)).to include('new incident')
+      end
     end
 
-    context 'without ID' do
-      it 'should raise a validation error'
+    context 'for update' do
+      let(:incident) { RightNow::Objects::Incident.new(id: 123, message: 'new incident') }
+
+      it 'should contain an ID' do
+        expect(incident.body(:update)).to include('123')
+      end
+
+      it 'should contain a new thread' do
+        expect(incident.body(:update)).to include('new incident')
+      end
     end
   end
 end

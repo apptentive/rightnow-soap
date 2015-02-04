@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Feb 2015 19:41:19 GMT
+      - Wed, 04 Feb 2015 00:21:15 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=498698 t=1422992479971300
+      - D=346141 t=1423009275180205
       Rnt-Machine:
-      - '0.70'
+      - '0.65'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version:
-  recorded_at: Tue, 03 Feb 2015 19:41:21 GMT
+  recorded_at: Wed, 04 Feb 2015 00:21:16 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -764,7 +764,7 @@ http_interactions:
         <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
           <env:Header>
             <message:ClientInfoHeader xmlns:message="urn:messages.ws.rightnow.com/v1_2" xmlns="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-              <AppID>test</AppID>
+              <AppID>Apptentive Integration</AppID>
             </message:ClientInfoHeader>
             <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" env:mustUnderstand="1">
               <wsse:UsernameToken>
@@ -776,23 +776,23 @@ http_interactions:
           <env:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <Create xmlns="urn:messages.ws.rightnow.com/v1_2">
               <RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Contact">
-                <object:Emails>
-                  <object:EmailList action="add">
-                    <object:Address>mike.tester@apptentive.com</object:Address>
-                    <object:AddressType>
-                      <base:ID id="0"/>
-                    </object:AddressType>
-                  </object:EmailList>
-                </object:Emails>
-                <object:Name>
-                  <object:First>Mike</object:First>
-                  <object:Last>Mike</object:Last>
-                </object:Name>
-              </RNObjects>
+          <object:Emails>
+            <object:EmailList action="add">
+              <object:Address>mike+tester@apptentive.com</object:Address>
+              <object:AddressType>
+                <base:ID id="0"/>
+              </object:AddressType>
+            </object:EmailList>
+          </object:Emails>
+          <object:Name>
+            <object:First>Mike</object:First>
+            <object:Last>Tester</object:Last>
+          </object:Name>
+        </RNObjects>
               <ProcessingOptions>
-                <SuppressExternalEvents>true</SuppressExternalEvents>
-                <SuppressRules>true</SuppressRules>
-              </ProcessingOptions>
+          <SuppressExternalEvents>true</SuppressExternalEvents>
+          <SuppressRules>true</SuppressRules>
+        </ProcessingOptions>
             </Create>
           </env:Body>
         </env:Envelope>
@@ -802,7 +802,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '1742'
+      - '1664'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -815,13 +815,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Feb 2015 19:41:21 GMT
+      - Wed, 04 Feb 2015 00:21:17 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=460490 t=1422992481477830
+      - D=467574 t=1423009277832398
       Rnt-Machine:
-      - '0.84'
+      - '0.71'
       Content-Length:
       - '271'
       Content-Type:
@@ -831,7 +831,7 @@ http_interactions:
       string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:CreateResponse
         xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:n2="urn:base.ws.rightnow.com/v1_2"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:objects.ws.rightnow.com/v1_2"><n0:RNObjectsResult><n0:RNObjects
-        xsi:type="n1:Contact"><n2:ID id="27404747"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponse></soapenv:Body></soapenv:Envelope>
+        xsi:type="n1:Contact"><n2:ID id="27404751"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponse></soapenv:Body></soapenv:Envelope>
     http_version:
-  recorded_at: Tue, 03 Feb 2015 19:41:22 GMT
+  recorded_at: Wed, 04 Feb 2015 00:21:18 GMT
 recorded_with: VCR 2.9.3

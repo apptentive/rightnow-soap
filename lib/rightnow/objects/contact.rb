@@ -5,7 +5,7 @@ class RightNow::Objects::Contact < RightNow::RNObject
     @type = 'Contact'
 
     @first_name = params[:first_name]
-    @last_name  = params[:first_name]
+    @last_name  = params[:last_name]
     @email      = params[:email]
   end
 

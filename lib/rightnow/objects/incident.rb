@@ -1,10 +1,10 @@
 class RightNow::Objects::Incident < RightNow::RNObject
-  attr_accessor :primary_contact, :message, :id, :subject
+  attr_accessor :primary_contact_id, :message, :id, :subject
 
   def initialize(params)
     @type = 'Incident'
 
-    @primary_contact = params[:primary_contact]
+    @primary_contact_id = params[:contact_id]
     @message = params[:message]
     @id = params[:id]
     @subject = params[:subject] || 'Apptentive Message'
@@ -26,7 +26,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
       xml.RNObjects('xsi:type' => "object:#{type}", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
         xml[:object].PrimaryContact do
           xml[:object].Contact do
-            xml[:base].ID(id: primary_contact)
+            xml[:base].ID(id: primary_contact_id)
           end
         end
         xml[:object].Subject(subject)
@@ -34,7 +34,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
         xml[:object].Threads do
           xml[:object].ThreadList(action: 'add') do
             xml[:object].EntryType do
-              xml[:base].ID(id: '2')
+              xml[:base].ID(id: 3)
             end
             xml[:object].Text(message)
           end

@@ -19,11 +19,11 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Feb 2015 18:20:50 GMT
+      - Wed, 04 Feb 2015 00:19:35 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=293053 t=1422987650545170
+      - D=216008 t=1423009175644351
       Rnt-Machine:
       - '0.67'
       Transfer-Encoding:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version:
-  recorded_at: Tue, 03 Feb 2015 18:20:51 GMT
+  recorded_at: Wed, 04 Feb 2015 00:19:36 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -764,7 +764,7 @@ http_interactions:
         <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
           <env:Header>
             <message:ClientInfoHeader xmlns:message="urn:messages.ws.rightnow.com/v1_2" xmlns="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-              <AppID>test</AppID>
+              <AppID>Apptentive Integration</AppID>
             </message:ClientInfoHeader>
             <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" env:mustUnderstand="1">
               <wsse:UsernameToken>
@@ -776,21 +776,21 @@ http_interactions:
           <env:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <Create xmlns="urn:messages.ws.rightnow.com/v1_2">
               <RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Incident">
-                <object:PrimaryContact>
-                  <object:Contact>
-                    <base:ID id="1"/>
-                  </object:Contact>
-                </object:PrimaryContact>
-                <object:Subject>Apptentive Message</object:Subject>
-                <object:Threads>
-                  <object:ThreadList action="add">
-                    <object:EntryType>
-                      <base:ID id="2"/>
-                    </object:EntryType>
-                    <object:Text>Test message to RightNow</object:Text>
-                  </object:ThreadList>
-                </object:Threads>
-              </RNObjects>
+          <object:PrimaryContact>
+            <object:Contact>
+              <base:ID id="27404747"/>
+            </object:Contact>
+          </object:PrimaryContact>
+          <object:Subject>Apptentive Message</object:Subject>
+          <object:Threads>
+            <object:ThreadList action="add">
+              <object:EntryType>
+                <base:ID id="3"/>
+              </object:EntryType>
+              <object:Text>my new message</object:Text>
+            </object:ThreadList>
+          </object:Threads>
+        </RNObjects>
             </Create>
           </env:Body>
         </env:Envelope>
@@ -800,7 +800,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '1665'
+      - '1580'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -813,13 +813,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Tue, 03 Feb 2015 18:20:51 GMT
+      - Wed, 04 Feb 2015 00:19:37 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=467908 t=1422987651611566
+      - D=784756 t=1423009177272085
       Rnt-Machine:
-      - '0.72'
+      - '0.85'
       Content-Length:
       - '272'
       Content-Type:
@@ -829,7 +829,7 @@ http_interactions:
       string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:CreateResponse
         xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:n2="urn:base.ws.rightnow.com/v1_2"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:objects.ws.rightnow.com/v1_2"><n0:RNObjectsResult><n0:RNObjects
-        xsi:type="n1:Incident"><n2:ID id="54947325"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponse></soapenv:Body></soapenv:Envelope>
+        xsi:type="n1:Incident"><n2:ID id="54947329"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponse></soapenv:Body></soapenv:Envelope>
     http_version:
-  recorded_at: Tue, 03 Feb 2015 18:20:52 GMT
+  recorded_at: Wed, 04 Feb 2015 00:19:38 GMT
 recorded_with: VCR 2.9.3

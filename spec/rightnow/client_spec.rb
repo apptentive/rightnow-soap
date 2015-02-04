@@ -3,6 +3,7 @@ require 'spec_helper'
 describe RightNow::Client do
   let(:client) { RightNow::Client.new("https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?wsdl",
                             "Apptentive", "AppPassword") }
+
   describe '#new' do
     it 'sets up a new client object' do
       expect(RightNow::Client.new('http://url.com', 'user', 'pass')).to_not be_nil
@@ -26,10 +27,10 @@ describe RightNow::Client do
   describe '#create' do
     context 'Incident' do
       context 'with valid parameters' do
-        let(:incident_params) { { message: 'my new message', contact: 1 } }
+        let(:incident_params) { { message: 'my new message', contact_id: '27404747' } }
 
         it 'should return success' do
-          VCR.use_cassette('create_incident') do
+          VCR.use_cassette('create_incident', match_requests_on: [:method, :uri, :body]) do
             incident = RightNow::Objects::Incident.new(incident_params)
             response = client.create(incident)
 
@@ -38,11 +39,11 @@ describe RightNow::Client do
         end
 
         it 'should return the ID of the newly created incident' do
-          VCR.use_cassette("create_incident") do
+          VCR.use_cassette("create_incident", match_requests_on: [:method, :uri, :body]) do
             incident = RightNow::Objects::Incident.new(incident_params)
             body = client.create(incident).body
 
-            expect(body[:create_response][:rn_objects_result][:rn_objects][:id][:@id]).to eq '54947325' # parse response body for id?
+            expect(body[:create_response][:rn_objects_result][:rn_objects][:id][:@id]).to eq '54947329' # parse response body for id?
           end
         end
       end
@@ -60,7 +61,7 @@ describe RightNow::Client do
     context 'Contact' do
       it 'should return success' do
         VCR.use_cassette("create_contact") do
-          contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike.tester@apptentive.com')
+          contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike+tester@apptentive.com')
           response = client.create(contact)
 
           expect(response).to be_success
@@ -68,11 +69,11 @@ describe RightNow::Client do
       end
 
       it 'should return the ID of the newly created contact' do
-        VCR.use_cassette("create_contact") do
-          contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike.tester@apptentive.com')
+        VCR.use_cassette("create_contact", match_requests_on: [:method, :uri, :body]) do
+          contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike+tester@apptentive.com')
           body = client.create(contact).body
 
-          expect(body[:create_response][:rn_objects_result][:rn_objects][:id][:@id]).to eq '27404747'
+          expect(body[:create_response][:rn_objects_result][:rn_objects][:id][:@id]).to eq '27404751'
         end
       end
     end
@@ -82,7 +83,7 @@ describe RightNow::Client do
     context 'Incident' do
       context 'with valid params' do
         it 'should return success' do
-          VCR.use_cassette('update_incident') do
+          VCR.use_cassette('update_incident', match_requests_on: [:method, :uri, :body]) do
             incident = RightNow::Objects::Incident.new(message: 'new addition to Thread', id: '54947325')
             response = client.update(incident)
 

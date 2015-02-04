@@ -42,7 +42,7 @@ class RightNow::Client
             end
           end
           xml[:env].Body('xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xmlns:xsd' => "http://www.w3.org/2001/XMLSchema") do
-            xml.send(action.upcase, 'xmlns' => "urn:messages.ws.rightnow.com/v1_2") do
+            xml.send(action.capitalize, 'xmlns' => "urn:messages.ws.rightnow.com/v1_2") do
               xml << yield
             end
           end
