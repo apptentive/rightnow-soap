@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 09:33:25 GMT
+      - Sat, 07 Feb 2015 08:29:27 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=130728 t=1423301605960116
+      - D=310484 t=1423297767323032
       Rnt-Machine:
-      - '0.67'
+      - '0.82'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 09:33:31 GMT
+  recorded_at: Sat, 07 Feb 2015 08:29:29 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -774,49 +774,22 @@ http_interactions:
             </wsse:Security>
           </env:Header>
           <env:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-            <message:Batch xmlns:message="urn:messages.ws.rightnow.com/v1_2">
-          <message:BatchRequestItem>
-            <message:CreateMsg>
-          <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Incident">
-            <base:ID id="0" variableName="MyIncident" xsi:type="ChainSourceID"/>
-            <object:PrimaryContact>
-              <object:Contact>
-                <base:ID id=""/>
-              </object:Contact>
-            </object:PrimaryContact>
-            <object:Subject>Apptentive Message</object:Subject>
-            <object:Threads>
-              <object:ThreadList action="add">
-                <object:EntryType>
-                  <base:ID id="3"/>
-                </object:EntryType>
-                <object:Text>forgot a contact_id</object:Text>
-              </object:ThreadList>
-            </object:Threads>
-          </message:RNObjects>
-        </message:CreateMsg>
-          </message:BatchRequestItem>
-          <message:BatchRequestItem>
-            <message:GetMsg>
-              <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xsi:type="object:Incident">
-                <ID xmlns="urn:base.ws.rightnow.com/v1_2" xsi:type="ChainDestinationID" id="0" variableName="MyIncident"/>
-                <object:Threads/>
-              </message:RNObjects>
-              <message:ProcessingOptions>
-                <message:FetchAllNames>false</message:FetchAllNames>
-              </message:ProcessingOptions>
-            </message:GetMsg>
-          </message:BatchRequestItem>
-        </message:Batch>
+            <QueryObjects xmlns="urn:messages.ws.rightnow.com/v1_2">
+          <Query>SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = 'mike+tester1@apptentive.com'</Query>
+          <ObjectTemplates xmlns:object="urn:objects.ws.rightnow.com/v1_2" xsi:type="object:Contact">
+            <object:Emails/>
+          </ObjectTemplates>
+          <PageSize>100</PageSize>
+        </QueryObjects>
           </env:Body>
         </env:Envelope>
     headers:
       Soapaction:
-      - '"Batch"'
+      - '"QueryObjects"'
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '2315'
+      - '1307'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -829,22 +802,26 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 09:33:31 GMT
+      - Sat, 07 Feb 2015 08:29:28 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=155031 t=1423301611896281
+      - D=178821 t=1423297768318270
       Rnt-Machine:
-      - '0.83'
+      - '0.71'
       Content-Length:
-      - '433'
+      - '613'
       Content-Type:
       - text/xml;charset=UTF-8
     body:
       encoding: UTF-8
-      string: |-
-        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:BatchResponse xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:faults.ws.rightnow.com/v1_2"><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>BAD_ID</n1:exceptionCode><n1:exceptionMessage>Invalid ID: ID of 0 is invalid for a Contact
-        While processing Incident-&gt;PrimaryContact(rno_v1_2::IncidentContact)-&gt;Contact(rnb_v1_2::NamedID).</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>UNKNOWN_EXCEPTION</n1:exceptionCode><n1:exceptionMessage>Operation not attempted due to previous failure in transaction</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
+      string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:QueryObjectsResponse
+        xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:n2="urn:base.ws.rightnow.com/v1_2"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:objects.ws.rightnow.com/v1_2"><n0:Result><n0:RNObjectsResult><n0:RNObjects
+        xsi:type="n1:Contact"><n2:ID id="27404755"></n2:ID><n2:LookupName>Mike Tester</n2:LookupName><n2:CreatedTime>2015-02-07T03:25:53.000Z</n2:CreatedTime><n2:UpdatedTime>2015-02-07T08:24:34.000Z</n2:UpdatedTime><n1:CRMModules><n1:Marketing>true</n1:Marketing><n1:Sales>true</n1:Sales><n1:Service>true</n1:Service></n1:CRMModules><n1:Disabled>false</n1:Disabled><n1:Emails><n1:EmailList><n1:Address>mike+tester1@apptentive.com</n1:Address><n1:AddressType><n2:ID
+        id="0"></n2:ID></n1:AddressType><n1:Invalid>false</n1:Invalid></n1:EmailList><n1:EmailList><n1:Address>joel+tester1@apptentive.com.invalid</n1:Address><n1:AddressType><n2:ID
+        id="1"></n2:ID></n1:AddressType><n1:Invalid>false</n1:Invalid></n1:EmailList></n1:Emails><n1:Name><n1:First>Mike</n1:First><n1:Last>Tester</n1:Last></n1:Name><n1:Source><n2:ID
+        id="6006"></n2:ID><n2:Parents xsi:type="n2:NamedReadOnlyID"><n2:ID id="32007"></n2:ID></n2:Parents></n1:Source></n0:RNObjects></n0:RNObjectsResult><n0:Paging><n0:ReturnedCount>1</n0:ReturnedCount><n0:StartIndex>0</n0:StartIndex><n0:QueryHandle></n0:QueryHandle></n0:Paging></n0:Result></n0:QueryObjectsResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 09:33:34 GMT
+  recorded_at: Sat, 07 Feb 2015 08:29:30 GMT
 recorded_with: VCR 2.9.3

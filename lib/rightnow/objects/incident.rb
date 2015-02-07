@@ -1,42 +1,89 @@
 class RightNow::Objects::Incident < RightNow::RNObject
-  attr_accessor :primary_contact_id, :message, :id, :subject
+  class Thread < Struct.new(:id, :display_order, :text); end
+
+  attr_accessor :primary_contact_id, :message, :id, :subject, :threads
 
   def initialize(params)
     @type = 'Incident'
 
-    @primary_contact_id = params[:contact_id]
-    @message = params[:message]
+    # when building a response object (:id in both)
     @id = params[:id]
     @subject = params[:subject] || 'Apptentive Message'
+    @threads = params[:threads]
+
+    # when requesting info from server
+    @message = params[:message]
+    @primary_contact_id = params[:contact_id]
   end
 
   def body(action)
     case action
     when :create
-      create_incident
+      incident_modification_wrapper { create_incident }
     when :update
-      update_incident
+      incident_modification_wrapper { update_incident }
+    when :find
+      find_incident
     end
+  end
+
+  # this knows the response format, which may be a different responsibility
+  def create_from_response(incident_params)
+    RightNow::Objects::Incident.new(id: incident_params[:id][:@id],
+      threads: build_threads(incident_params[:threads][:thread_list])
+    )
   end
 
   private
 
-  def create_incident
+  def build_threads(thread_list)
+    [thread_list].flatten.map do |raw|
+      Thread.new(id: raw[:id][:@id], display_order: raw[:display_order], text: raw[:text])
+    end
+  end
+
+  # building XML for this object feels like a different responsibility
+  # where would it go?
+  def incident_modification_wrapper
     Nokogiri::XML::Builder.new do |xml|
-      xml.RNObjects('xsi:type' => "object:#{type}", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
-        xml[:object].PrimaryContact do
-          xml[:object].Contact do
-            xml[:base].ID(id: primary_contact_id)
+      xml[:message].Batch('xmlns:message' => 'urn:messages.ws.rightnow.com/v1_2') do
+        xml[:message].BatchRequestItem do
+          xml << yield
+        end
+        xml[:message].BatchRequestItem do
+          xml[:message].GetMsg do
+            xml[:message].RNObjects('xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance', 'xsi:type' => 'object:Incident') do
+              xml.ID('xmlns' => 'urn:base.ws.rightnow.com/v1_2', 'xsi:type' => 'ChainDestinationID', 'id' => '0', 'variableName' => 'MyIncident')
+              xml[:object].Threads
+            end
+            xml[:message].ProcessingOptions do
+              xml[:message].FetchAllNames('false')
+            end
           end
         end
-        xml[:object].Subject(subject)
-        # NOTE: what if there is a nil or blank message sent to Oracle?
-        xml[:object].Threads do
-          xml[:object].ThreadList(action: 'add') do
-            xml[:object].EntryType do
-              xml[:base].ID(id: 3)
+      end
+    end.doc.root.to_xml
+  end
+
+  def create_incident
+    Nokogiri::XML::Builder.new do |xml|
+      xml.CreateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
+        xml.RNObjects('xsi:type' => 'object:Incident', 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
+          xml[:base].ID('xmlns:base' => 'urn:base.ws.rightnow.com/v1_2', 'xsi:type' => 'ChainSourceID', 'id' => '0', 'variableName' => 'MyIncident')
+          xml[:object].PrimaryContact do
+            xml[:object].Contact do
+              xml[:base].ID(id: primary_contact_id)
             end
-            xml[:object].Text(message)
+          end
+          xml[:object].Subject(subject)
+          # NOTE: what if there is a nil or blank message sent to Oracle?
+          xml[:object].Threads do
+            xml[:object].ThreadList(action: 'add') do
+              xml[:object].EntryType do
+                xml[:base].ID(id: 3)
+              end
+              xml[:object].Text(message)
+            end
           end
         end
       end
@@ -45,25 +92,39 @@ class RightNow::Objects::Incident < RightNow::RNObject
 
   def update_incident
     Nokogiri::XML::Builder.new do |xml|
-      xml.RNObjects('xsi:type' => "object:#{type}", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
-        xml[:base].ID(id: id)
-        xml[:object].Threads do
-          xml[:object].ThreadList(action: 'add') do
-            xml[:object].EntryType do
-              # if an agent is responding from Apptentive dashboard, it needs to be 2 (Staff Account)
-                # 1 - Note
-                # 2 - Staff Account
-                # 3 - Customer
-                # 4 - Customer Proxy
-                # 5 - Chat
-                # 6 - Rule Response
-                # 7 - Rule Response Template
-                # 8 - Voice Integration
-              xml[:base].ID(id: 3)
+      xml.UpdateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
+        xml.RNObjects('xsi:type' => "object:Incident", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
+          xml[:base].ID(id: id, 'xsi:type' => 'ChainSourceID', 'variableName' => 'MyIncident')
+          xml[:object].Threads do
+            xml[:object].ThreadList(action: 'add') do
+              xml[:object].EntryType do
+                # if an agent is responding from Apptentive dashboard, it needs to be 2 (Staff Account)
+                  # 1 - Note
+                  # 2 - Staff Account
+                  # 3 - Customer
+                  # 4 - Customer Proxy
+                  # 5 - Chat
+                  # 6 - Rule Response
+                  # 7 - Rule Response Template
+                  # 8 - Voice Integration
+                xml[:base].ID(id: 3)
+              end
+              xml[:object].Text(message)
             end
-            xml[:object].Text(message)
           end
         end
+      end
+    end.doc.root.to_xml
+  end
+
+  def find_incident
+    Nokogiri::XML::Builder.new do |xml|
+      xml.QueryObjects('xmlns' => "urn:messages.ws.rightnow.com/v1_2") do
+        xml.Query("SELECT Incident FROM Incident i WHERE i.ID = '#{id}'")
+        xml.ObjectTemplates('xmlns:object' => "urn:objects.ws.rightnow.com/v1_2", 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xsi:type' => "object:Incident") do
+          xml[:object].Threads
+        end
+        xml.PageSize('100')
       end
     end.doc.root.to_xml
   end

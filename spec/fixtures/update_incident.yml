@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 04 Feb 2015 00:19:45 GMT
+      - Sat, 07 Feb 2015 07:39:27 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=265205 t=1423009185377795
+      - D=181707 t=1423294767893366
       Rnt-Machine:
-      - '0.95'
+      - '0.85'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -753,8 +753,8 @@ http_interactions:
         binding=\"rnw_v1_2:RightNowFedAuthSyncBinding\">\n            <soap:address
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
-    http_version:
-  recorded_at: Wed, 04 Feb 2015 00:19:46 GMT
+    http_version: 
+  recorded_at: Sat, 07 Feb 2015 07:39:29 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -774,28 +774,43 @@ http_interactions:
             </wsse:Security>
           </env:Header>
           <env:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-            <Update xmlns="urn:messages.ws.rightnow.com/v1_2">
-              <RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Incident">
-          <base:ID id="54947325"/>
-          <object:Threads>
-            <object:ThreadList action="add">
-              <object:EntryType>
-                <base:ID id="3"/>
-              </object:EntryType>
-              <object:Text>new addition to Thread</object:Text>
-            </object:ThreadList>
-          </object:Threads>
-        </RNObjects>
-            </Update>
+            <message:Batch xmlns:message="urn:messages.ws.rightnow.com/v1_2">
+          <message:BatchRequestItem>
+            <message:UpdateMsg>
+          <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Incident">
+            <base:ID id="54947325" variableName="MyIncident" xsi:type="ChainSourceID"/>
+            <object:Threads>
+              <object:ThreadList action="add">
+                <object:EntryType>
+                  <base:ID id="3"/>
+                </object:EntryType>
+                <object:Text>new thread entry</object:Text>
+              </object:ThreadList>
+            </object:Threads>
+          </message:RNObjects>
+        </message:UpdateMsg>
+          </message:BatchRequestItem>
+          <message:BatchRequestItem>
+            <message:GetMsg>
+              <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xsi:type="object:Incident">
+                <ID xmlns="urn:base.ws.rightnow.com/v1_2" xsi:type="ChainDestinationID" id="0" variableName="MyIncident"/>
+                <object:Threads/>
+              </message:RNObjects>
+              <message:ProcessingOptions>
+                <message:FetchAllNames>false</message:FetchAllNames>
+              </message:ProcessingOptions>
+            </message:GetMsg>
+          </message:BatchRequestItem>
+        </message:Batch>
           </env:Body>
         </env:Envelope>
     headers:
       Soapaction:
-      - '"Update"'
+      - '"Batch"'
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '1434'
+      - '2134'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -808,21 +823,53 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 04 Feb 2015 00:19:47 GMT
+      - Sat, 07 Feb 2015 07:39:28 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=383776 t=1423009187261868
+      - D=1319962 t=1423294768677550
       Rnt-Machine:
-      - '0.85'
+      - '0.84'
       Content-Length:
-      - '194'
+      - '877'
       Content-Type:
       - text/xml;charset=UTF-8
     body:
       encoding: UTF-8
-      string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:UpdateResponse
-        xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></n0:UpdateResponse></soapenv:Body></soapenv:Envelope>
-    http_version:
-  recorded_at: Wed, 04 Feb 2015 00:19:47 GMT
+      string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:BatchResponse
+        xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:n2="urn:base.ws.rightnow.com/v1_2"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:objects.ws.rightnow.com/v1_2"><n0:BatchResponseItem><n0:UpdateResponseMsg></n0:UpdateResponseMsg></n0:BatchResponseItem><n0:BatchResponseItem><n0:GetResponseMsg><n0:RNObjectsResult><n0:RNObjects
+        xsi:type="n1:Incident"><n2:ID id="54947325"></n2:ID><n2:LookupName>150203-000008</n2:LookupName><n2:CreatedTime>2015-02-03T18:20:51.000Z</n2:CreatedTime><n2:UpdatedTime>2015-02-07T07:39:29.000Z</n2:UpdatedTime><n1:CreatedByAccount><n2:ID
+        id="61197"></n2:ID></n1:CreatedByAccount><n1:InitialResponseDueTime>2015-02-04T18:20:00.000Z</n1:InitialResponseDueTime><n1:Interface><n2:ID
+        id="2"></n2:ID></n1:Interface><n1:Language><n2:ID id="1"></n2:ID></n1:Language><n1:PrimaryContact><n1:Contact><n2:ID
+        id="27404745"></n2:ID></n1:Contact></n1:PrimaryContact><n1:ReferenceNumber>150203-000008</n1:ReferenceNumber><n1:SmartSenseCustomer>1</n1:SmartSenseCustomer><n1:SmartSenseStaff>0</n1:SmartSenseStaff><n1:Source><n2:ID
+        id="6006"></n2:ID><n2:Parents xsi:type="n2:NamedReadOnlyID"><n2:ID id="32007"></n2:ID></n2:Parents></n1:Source><n1:StatusWithType><n1:Status><n2:ID
+        id="1"></n2:ID></n1:Status><n1:StatusType><n2:ID id="1"></n2:ID></n1:StatusType></n1:StatusWithType><n1:Subject>Apptentive
+        Message</n1:Subject><n1:Threads><n1:ThreadList><n1:Contact><n2:ID id="27404745"></n2:ID></n1:Contact><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-07T07:39:29.000Z</n1:CreatedTime><n1:DisplayOrder>8</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485451"></n1:ID><n1:Text>new thread
+        entry</n1:Text></n1:ThreadList><n1:ThreadList><n1:Contact><n2:ID id="27404745"></n2:ID></n1:Contact><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-07T03:25:55.000Z</n1:CreatedTime><n1:DisplayOrder>7</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485448"></n1:ID><n1:Text>new thread
+        entry</n1:Text></n1:ThreadList><n1:ThreadList><n1:Contact><n2:ID id="27404745"></n2:ID></n1:Contact><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-06T18:28:58.000Z</n1:CreatedTime><n1:DisplayOrder>6</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485446"></n1:ID><n1:Text>new addition
+        to Thread</n1:Text></n1:ThreadList><n1:ThreadList><n1:Contact><n2:ID id="27404745"></n2:ID></n1:Contact><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-04T00:19:47.000Z</n1:CreatedTime><n1:DisplayOrder>5</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485440"></n1:ID><n1:Text>new addition
+        to Thread</n1:Text></n1:ThreadList><n1:ThreadList><n1:Contact><n2:ID id="27404745"></n2:ID></n1:Contact><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-04T00:16:40.000Z</n1:CreatedTime><n1:DisplayOrder>4</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485438"></n1:ID><n1:Text>new addition
+        to Thread</n1:Text></n1:ThreadList><n1:ThreadList><n1:Contact><n2:ID id="27404745"></n2:ID></n1:Contact><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-04T00:14:28.000Z</n1:CreatedTime><n1:DisplayOrder>3</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485437"></n1:ID><n1:Text>new addition
+        to Thread</n1:Text></n1:ThreadList><n1:ThreadList><n1:Contact><n2:ID id="27404745"></n2:ID></n1:Contact><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-03T18:58:14.000Z</n1:CreatedTime><n1:DisplayOrder>2</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485436"></n1:ID><n1:Text>new addition
+        to Thread</n1:Text></n1:ThreadList><n1:ThreadList><n1:Account><n2:ID id="61197"></n2:ID></n1:Account><n1:ContentType><n2:ID
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-03T18:20:51.000Z</n1:CreatedTime><n1:DisplayOrder>1</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="2"></n2:ID></n1:EntryType><n1:ID id="61485434"></n1:ID><n1:Text>Is this
+        an agent response? </n1:Text></n1:ThreadList></n1:Threads></n0:RNObjects></n0:RNObjectsResult></n0:GetResponseMsg></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
+    http_version: 
+  recorded_at: Sat, 07 Feb 2015 07:39:31 GMT
 recorded_with: VCR 2.9.3

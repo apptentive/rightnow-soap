@@ -49,3 +49,6 @@ pkg
 #*.rbc
 
 run.rb
+sample_send.xml
+convert_yml.rb
+TODO

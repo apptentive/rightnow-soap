@@ -27,23 +27,15 @@ describe RightNow::Client do
   describe '#create' do
     context 'Incident' do
       context 'with valid parameters' do
-        let(:incident_params) { { message: 'my new message', contact_id: '27404747' } }
-
-        it 'should return success' do
+        it 'should return an Incident with full attributes' do
           VCR.use_cassette('create_incident', match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(incident_params)
+            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test')
             response = client.create(incident)
 
-            expect(response).to be_success
-          end
-        end
-
-        it 'should return the ID of the newly created incident' do
-          VCR.use_cassette("create_incident", match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(incident_params)
-            body = client.create(incident).body
-
-            expect(body[:create_response][:rn_objects_result][:rn_objects][:id][:@id]).to eq '54947329' # parse response body for id?
+            expect(response).to be_a(RightNow::Objects::Incident)
+            expect(response.id).to eq '54947341'
+            expect(response.subject).to eq 'Apptentive Message'
+            expect(response.threads.length).to eq 1
           end
         end
       end
@@ -52,29 +44,28 @@ describe RightNow::Client do
         it 'should return failure' do
           VCR.use_cassette('failed_incident') do
             incident = RightNow::Objects::Incident.new(message: 'forgot a contact_id')
-            expect { client.create(incident) }.to raise_error(Savon::SOAPFault)
+            expect { client.create(incident) }.to raise_error(RightNow::InvalidObject)
           end
         end
       end
     end
 
     context 'Contact' do
-      it 'should return success' do
-        VCR.use_cassette("create_contact") do
-          contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike+tester@apptentive.com')
+      it 'should return a Contact object' do
+        VCR.use_cassette('create_contact', match_requests_on: [:method, :uri, :body]) do
+          contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike+tester4@apptentive.com.invalid')
           response = client.create(contact)
 
-          expect(response).to be_success
+          expect(response).to be_a(RightNow::Objects::Contact)
+          expect(response.email).to eq 'mike+tester4@apptentive.com.invalid'
+          expect(response.id).to eq '27404760'
+          expect(response.first_name).to eq 'Mike'
+          expect(response.last_name).to eq 'Tester'
         end
       end
 
-      it 'should return the ID of the newly created contact' do
-        VCR.use_cassette("create_contact", match_requests_on: [:method, :uri, :body]) do
-          contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike+tester@apptentive.com')
-          body = client.create(contact).body
-
-          expect(body[:create_response][:rn_objects_result][:rn_objects][:id][:@id]).to eq '27404751'
-        end
+      context 'with duplicate email' do
+        it 'should raise a duplicate error'
       end
     end
   end
@@ -82,12 +73,67 @@ describe RightNow::Client do
   describe '#update' do
     context 'Incident' do
       context 'with valid params' do
-        it 'should return success' do
+        it 'should return an Incident with full attributes' do
           VCR.use_cassette('update_incident', match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(message: 'new addition to Thread', id: '54947325')
+            incident = RightNow::Objects::Incident.new(id: '54947325', message: 'new thread entry')
             response = client.update(incident)
 
-            expect(response).to be_success
+            expect(response).to be_a(RightNow::Objects::Incident)
+            expect(response.id).to eq '54947325'
+            expect(response.subject).to eq 'Apptentive Message'
+            expect(response.threads.length).to eq 8
+          end
+        end
+      end
+    end
+  end
+
+  describe '#find' do
+    context 'Incident' do
+      it 'should return an Incident object' do
+        VCR.use_cassette('find_incident', match_requests_on: [:method, :uri, :body]) do
+          incident = RightNow::Objects::Incident.new(id: '54947325')
+          response = client.find(incident)
+
+          expect(response).to be_a(RightNow::Objects::Incident)
+          expect(response.id).to eq '54947325'
+          expect(response.threads.length).to eq 8
+        end
+      end
+
+      context 'when incident is not in Oracle' do
+        it 'should return nil' do
+          VCR.use_cassette('no_incident_found', match_requests_on: [:method, :uri, :body]) do
+            incident = RightNow::Objects::Incident.new(id: '1')
+            response = client.find(incident)
+
+            expect(response).to be_nil
+          end
+        end
+      end
+    end
+
+    context 'Contact' do
+      it 'should return a Contact object' do
+        VCR.use_cassette('find_contact', match_requests_on: [:method, :uri, :body]) do
+          contact = RightNow::Objects::Contact.new(email: 'mike+tester1@apptentive.com')
+          response = client.find(contact)
+
+          expect(response).to be_a(RightNow::Objects::Contact)
+          expect(response.email).to eq 'mike+tester1@apptentive.com'
+          expect(response.id).to eq '27404755'
+          expect(response.first_name).to eq 'Mike'
+          expect(response.last_name).to eq 'Tester'
+        end
+      end
+
+      context 'when user is not in Oracle' do
+        it 'should return nil' do
+          VCR.use_cassette('no_contact_found', match_requests_on: [:method, :uri, :body]) do
+            contact = RightNow::Objects::Contact.new(email: 'testeroni@apptentive.com')
+            response = client.find(contact)
+
+            expect(response).to be_nil
           end
         end
       end

@@ -6,9 +6,22 @@ This library currently only supports:
 
 - Contact
   - Create
+  - Find
 - Incident
   - Create
   - Update
+  - Find
+
+## Example Usage
+
+```ruby
+client = RightNow::Client.new('wsdl url', 'username', 'password')
+
+contact = RightNow::Objects::Contact.new(email: 'tester@apptentive.com.invalid')
+
+client.create(contact)
+# this will return a filled out Contact object
+```
 
 ## Issues, Questions & ToDos
 

@@ -25,5 +25,17 @@ describe RightNow::Objects::Incident do
         expect(incident.body(:update)).to include('new incident')
       end
     end
+
+    context 'for find' do
+      let(:incident) { RightNow::Objects::Incident.new(id: 123) }
+
+      it 'should contain SQL' do
+        expect(incident.body(:find)).to include('SELECT Incident FROM Incident i WHERE i.ID')
+      end
+
+      it 'should request the Threads in the return template' do
+        expect(incident.body(:find)).to include('<object:Threads/>')
+      end
+    end
   end
 end
