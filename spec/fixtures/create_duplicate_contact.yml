@@ -1,0 +1,852 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 08 Feb 2015 03:39:33 GMT
+      Server:
+      - Apache
+      Rnt-Time:
+      - D=279148 t=1423366773881206
+      Rnt-Machine:
+      - '0.98'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - text/plain; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<!--\n    Copyright @
+        2009, 2015, Oracle and/or its affiliates. All rights reserved.\n\thttp://www.oracle.com\n-->\n\n<wsdl:definitions
+        xmlns=\"http://schemas.xmlsoap.org/wsdl/\"\n\ttargetNamespace=\"urn:wsdl.ws.rightnow.com/v1_2\"\n\txmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\"\n\txmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\"\n\txmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"\n\txmlns:rnb_v1_2=\"urn:base.ws.rightnow.com/v1_2\"\n\txmlns:rng_v1_2=\"urn:generic.ws.rightnow.com/v1_2\"\n\txmlns:rnn_v1_2=\"urn:nullfields.ws.rightnow.com/v1_2\"\n\txmlns:rno_v1_2=\"urn:objects.ws.rightnow.com/v1_2\"\n\txmlns:rna_v1_2=\"urn:metadata.ws.rightnow.com/v1_2\"\n\txmlns:rnf_v1_2=\"urn:faults.ws.rightnow.com/v1_2\"\n\txmlns:rnm_v1_2=\"urn:messages.ws.rightnow.com/v1_2\"\n\txmlns:rnw_v1_2=\"urn:wsdl.ws.rightnow.com/v1_2\"\n\tname=\"RightNow\">\n\n\t<wsdl:documentation><version>1.2</version><wsdlRevision>1.2.14.2</wsdlRevision></wsdl:documentation>\n\n\t<wsp:Policy
+        xmlns:sp='http://schemas.xmlsoap.org/ws/2005/07/securitypolicy' xmlns:wsu='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd'
+        wsu:Id='SyncPolicy' xmlns:wsp='http://schemas.xmlsoap.org/ws/2004/09/policy'>\n\t
+        \ <wsp:ExactlyOne>\n\t    <wsp:All>\n\t\n\t      <sp:TransportBinding>\n\t
+        \       <wsp:Policy>\n\t          <wsp:ExactlyOne>\n\t            <wsp:All>\n\t\n\t
+        \             <sp:TransportToken>\n\t                <wsp:Policy>\n\t                  <wsp:ExactlyOne>\n\t
+        \                   <sp:HttpsToken />\n\t                  </wsp:ExactlyOne>\n\t
+        \               </wsp:Policy>\n\t              </sp:TransportToken>\n\t\n\t
+        \             <sp:AlgorithmSuite>\n\t                <wsp:Policy>\n\t                  <sp:Basic256
+        />\n\t                </wsp:Policy>\n\t              </sp:AlgorithmSuite>\n\t\n\t
+        \             <sp:Layout>\n\t                <wsp:Policy>\n\t                  <wsp:ExactlyOne>\n\t
+        \                   <sp:Lax />\n\t                  </wsp:ExactlyOne>\n\t
+        \               </wsp:Policy>\n\t              </sp:Layout>\n\t\n\t            </wsp:All>\n\t
+        \         </wsp:ExactlyOne>\n\t        </wsp:Policy>\n\t      </sp:TransportBinding>\n\t\n\t
+        \     <wsp:ExactlyOne>\n\t\n\t        <!-- Begin SignedSupportingTokens -->\n\t\n\t
+        \       <sp:SignedSupportingTokens>\n\t          <wsp:Policy>\n\t            <wsp:ExactlyOne>\n\t
+        \             <sp:UsernameToken sp:IncludeToken='http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient'>\n\t
+        \               <wsp:Policy>\n\t                  <wsp:ExactlyOne>\n\t                    <sp:WssUsernameToken10
+        />\n\t                  </wsp:ExactlyOne>\n\t                </wsp:Policy>\n\t
+        \             </sp:UsernameToken>\n\t            </wsp:ExactlyOne>\n\t          </wsp:Policy>\n\t
+        \       </sp:SignedSupportingTokens>\n\t\n\t        <!-- End SignedSupportingTokens
+        -->\n\t\n\t        <!-- Begin SupportingTokens -->\n\t\n\t        <sp:SupportingTokens>\n\t
+        \         <wsp:Policy>\n\t            <wsp:ExactlyOne>\n\t              <sp:UsernameToken
+        sp:IncludeToken='http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient'>\n\t
+        \               <wsp:Policy>\n\t                  <wsp:ExactlyOne>\n\t                    <sp:WssUsernameToken10
+        />\n\t                  </wsp:ExactlyOne>\n\t                </wsp:Policy>\n\t
+        \             </sp:UsernameToken>\n\t            </wsp:ExactlyOne>\n\t          </wsp:Policy>\n\t
+        \       </sp:SupportingTokens>\n\t\n\t        <!-- End SupportingTokens -->\n\t\n\t
+        \     </wsp:ExactlyOne>\n\t\n\t    </wsp:All>\n\t  </wsp:ExactlyOne>\n\t</wsp:Policy>\n\t\n\t<wsp:Policy
+        xmlns:wsp='http://www.w3.org/ns/ws-policy' xmlns:wsu='http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd'
+        wsu:Id='FedAuthSyncPolicy' xmlns:wsam='http://www.w3.org/2007/05/addressing/metadata'
+        xmlns:sp='http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702' xmlns:t='http://docs.oasis-open.org/ws-sx/ws-trust/200512'
+        xmlns:wsaw='http://www.w3.org/2005/08/addressing' xmlns:wsx='http://schemas.xmlsoap.org/ws/2004/09/mex'>\n\t
+        \ <wsp:ExactlyOne>\n\t    <wsp:All>\n\t\n\t      <sp:TransportBinding>\n\t
+        \       <wsp:Policy>\n\t\n\t          <sp:TransportToken>\n\t            <wsp:Policy>\n\t
+        \             <sp:HttpsToken/>\n\t            </wsp:Policy>\n\t          </sp:TransportToken>\n\t\n\t
+        \         <sp:AlgorithmSuite>\n\t            <wsp:Policy>\n\t              <sp:Basic256/>\n\t
+        \           </wsp:Policy>\n\t          </sp:AlgorithmSuite>\n\t\n\t          <sp:Layout>\n\t
+        \           <wsp:Policy>\n\t              <sp:Lax/>\n\t            </wsp:Policy>\n\t
+        \         </sp:Layout>\n\t        </wsp:Policy>\n\t      </sp:TransportBinding>\n\t\n\t
+        \     <sp:SignedSupportingTokens xmlns:sp='http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702'>\n\t
+        \       <wsp:Policy>\n\t          <sp:IssuedToken sp:IncludeToken='http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient'>\n\t
+        \           <sp:RequestSecurityTokenTemplate>\n\t              <t:TokenType>http://docs.oasis-open.org/wss/oasis-wss-saml-token-profile-1.1#SAMLV2.0</t:TokenType>\n\t
+        \             <t:KeyType>http://docs.oasis-open.org/ws-sx/ws-trust/200512/Bearer</t:KeyType>\n\t
+        \             <t:CanonicalizationAlgorithm>http://www.w3.org/2001/10/xml-exc-c14n#</t:CanonicalizationAlgorithm>\n\t
+        \             <t:SignWith>http://www.w3.org/2000/09/xmldsig#hmac-sha1</t:SignWith>\n\t
+        \             <t:SignatureAlgorithm>http://www.w3.org/2000/09/xmldsig#rsa-sha1</t:SignatureAlgorithm>\n\t
+        \           </sp:RequestSecurityTokenTemplate>\n\t            <wsp:Policy>\n\t
+        \             <sp:RequireInternalReference/>\n\t            </wsp:Policy>\n\t
+        \           <sp:Issuer>\n\t              <wsaw:Address></wsaw:Address>\n\t
+        \             <wsaw:Metadata>\n\t                <wsx:Metadata>\n\t                  <wsx:MetadataSection>\n\t
+        \                   <wsx:MetadataReference>\n\t                      <wsaw:Address></wsaw:Address>\n\t
+        \                   </wsx:MetadataReference>\n\t                  </wsx:MetadataSection>\n\t
+        \               </wsx:Metadata>\n\t              </wsaw:Metadata>\n\t            </sp:Issuer>\n\t
+        \         </sp:IssuedToken>\n\t        </wsp:Policy>\n\t      </sp:SignedSupportingTokens>\n\t
+        \       \n\t      <sp:Wss11>\n\t        <wsp:Policy/>\n\t      </sp:Wss11>\n\t
+        \       \n\t      <sp:Trust13>\n\t        <wsp:Policy>\n\t          <sp:MustSupportIssuedTokens/>\n\t
+        \       </wsp:Policy>\n\t      </sp:Trust13>\n\t\n\t    </wsp:All>\n\t  </wsp:ExactlyOne>\n\t</wsp:Policy>\n\n\t<wsdl:types>\n
+        \      \t\t<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n       \t\t\t<xs:import
+        namespace=\"urn:base.ws.rightnow.com/v1_2\" schemaLocation=\"http://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?xsd=base\"/>\n
+        \      \t\t\t<xs:import namespace=\"urn:generic.ws.rightnow.com/v1_2\" schemaLocation=\"http://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?xsd=generic\"/>\n
+        \      \t\t\t<xs:import namespace=\"urn:nullfields.ws.rightnow.com/v1_2\"
+        schemaLocation=\"http://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?xsd=nullfields\"/>\n
+        \      \t\t\t<xs:import namespace=\"urn:objects.ws.rightnow.com/v1_2\" schemaLocation=\"http://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?xsd=objects\"/>\n
+        \      \t\t\t<xs:import namespace=\"urn:metadata.ws.rightnow.com/v1_2\" schemaLocation=\"http://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?xsd=metadata\"/>\n
+        \      \t\t\t<xs:import namespace=\"urn:faults.ws.rightnow.com/v1_2\" schemaLocation=\"http://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?xsd=faults\"/>\n
+        \      \t\t\t<xs:import namespace=\"urn:messages.ws.rightnow.com/v1_2\" schemaLocation=\"http://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?xsd=messagestyped\"/>\n
+        \      \t\t</xs:schema>\n\t</wsdl:types>\n\n\t<!--  Fault messages  -->\n\n\t<wsdl:message
+        name=\"RNFault\">\n\t\t<wsdl:part name=\"fault\" type=\"rnf_v1_2:RNFault\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"RequestErrorFault\">\n\t\t<wsdl:part name=\"fault\" element=\"rnf_v1_2:RequestErrorFault\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"ServerErrorFault\">\n\t\t<wsdl:part name=\"fault\" element=\"rnf_v1_2:ServerErrorFault\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"UnexpectedErrorFault\">\n\t\t<wsdl:part name=\"fault\" element=\"rnf_v1_2:UnexpectedErrorFault\"/>\n\t</wsdl:message>\n\n\n\t<!--
+        \ Basic CRUD operations  -->\n\n\t<wsdl:message name=\"ClientInfoHeader\">\n\t\t<wsdl:part
+        name=\"request_header\" element=\"rnm_v1_2:ClientInfoHeader\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"CreateRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:Create\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"CreateResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:CreateResponse\"/>\n\t</wsdl:message>\n\t\n\t<wsdl:message
+        name=\"GetRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:Get\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"GetResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:GetResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"UpdateRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:Update\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"UpdateResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:UpdateResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"DestroyRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:Destroy\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"DestroyResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:DestroyResponse\"/>\n\t</wsdl:message>\n\n\n\t<!--
+        \ ROQL operations  -->\n\n\t<wsdl:message name=\"QueryCSVRequest\">\n\t\t<wsdl:part
+        name=\"parameters\" element=\"rnm_v1_2:QueryCSV\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"QueryCSVResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:QueryCSVResponse\"/>\n\t</wsdl:message>\n\t\n\t<wsdl:message
+        name=\"QueryObjectsRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:QueryObjects\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"QueryObjectsResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:QueryObjectsResponse\"/>\n\t</wsdl:message>\n\t\n\t<!--
+        \ RunAnalyticsReport operations  -->\n\n\t<wsdl:message name=\"RunAnalyticsReportRequest\">\n\t\t<wsdl:part
+        name=\"parameters\" element=\"rnm_v1_2:RunAnalyticsReport\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"RunAnalyticsReportResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:RunAnalyticsReportResponse\"/>\n\t</wsdl:message>\n\n\t\n\t<!--
+        \ Miscellaneous operations  -->\n\n\t<wsdl:message name=\"ExecuteMarketingFlowRequest\">\n\t\t<wsdl:part
+        name=\"parameters\" element=\"rnm_v1_2:ExecuteMarketingFlow\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"ExecuteMarketingFlowResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:ExecuteMarketingFlowResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"GetFileDataRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:GetFileData\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"GetFileDataResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:GetFileDataResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"ResetContactPasswordRequest\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:ResetContactPassword\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"ResetContactPasswordResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:ResetContactPasswordResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"SendMailingToContactRequest\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:SendMailingToContact\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"SendMailingToContactResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:SendMailingToContactResponse\"/>\n\t</wsdl:message>\n\n
+        \   <wsdl:message name=\"TransferSubObjectsRequest\">\n        <wsdl:part
+        name=\"parameters\" element=\"rnm_v1_2:TransferSubObjects\"/>\n    </wsdl:message>\n
+        \   <wsdl:message name=\"TransferSubObjectsResponse\">\n        <wsdl:part
+        name=\"parameters\" element=\"rnm_v1_2:TransferSubObjectsResponse\"/>\n    </wsdl:message>\n\n\n\t<!--
+        \ Batch operations  -->\n\n\t<wsdl:message name=\"BatchRequest\">\n\t\t<wsdl:part
+        name=\"parameters\" element=\"rnm_v1_2:Batch\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"BatchResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:BatchResponse\"/>\n\t</wsdl:message>\n\n\n\t<!--
+        \ Metadata operations  -->\n\n\t<wsdl:message name=\"GetMetaDataRequest\">\n\t\t<wsdl:part
+        name=\"parameters\" element=\"rnm_v1_2:GetMetaData\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"GetMetaDataResponse\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:GetMetaDataResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"GetMetaDataForClassRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:GetMetaDataForClass\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"GetMetaDataForClassResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:GetMetaDataForClassResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"GetMetaDataLastChangeTimeRequest\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:GetMetaDataLastChangeTime\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"GetMetaDataLastChangeTimeResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:GetMetaDataLastChangeTimeResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"GetValuesForNamedIDRequest\">\n\t\t<wsdl:part name=\"parameters\" element=\"rnm_v1_2:GetValuesForNamedID\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"GetValuesForNamedIDResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:GetValuesForNamedIDResponse\"/>\n\t</wsdl:message>\n\n\t<wsdl:message
+        name=\"GetValuesForNamedIDHierarchyRequest\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:GetValuesForNamedIDHierarchy\"/>\n\t</wsdl:message>\n\t<wsdl:message
+        name=\"GetValuesForNamedIDHierarchyResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:GetValuesForNamedIDHierarchyResponse\"/>\n\t</wsdl:message>\n\n
+        \   <!--  Conversion Routines for Generic Objects  -->\n\n\t<wsdl:message
+        name=\"ConvertGenericToObjectRequest\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:ConvertGenericToObject\"/>\n\t</wsdl:message>\n\t\n\t<wsdl:message
+        name=\"ConvertGenericToObjectResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:ConvertGenericToObjectResponse\"/>\n\t</wsdl:message>\n\t\n\t<wsdl:message
+        name=\"ConvertObjectToGenericRequest\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:ConvertObjectToGeneric\"/>\n\t</wsdl:message>\n\t\n\t<wsdl:message
+        name=\"ConvertObjectToGenericResponse\">\n\t\t<wsdl:part name=\"parameters\"
+        element=\"rnm_v1_2:ConvertObjectToGenericResponse\"/>\n\t</wsdl:message>\n\t\n\n\t<wsdl:portType
+        name=\"RightNowSyncPort\">\n\n\t\t<!--  Basic CRUD operations, plus batching
+        \ -->\n\n\t\t<wsdl:operation name=\"Create\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:CreateRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:CreateResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"Get\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"Update\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:UpdateRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:UpdateResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"Destroy\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:DestroyRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:DestroyResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\t\t<!--  ROQL
+        operations  -->\n\n\t\t<wsdl:operation name=\"QueryObjects\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:QueryObjectsRequest\"/>\n\t\t\t<wsdl:output message=\"rnw_v1_2:QueryObjectsResponse\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"QueryCSV\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:QueryCSVRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:QueryCSVResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\t\t<!--  RunAnalyticsReport
+        operations  -->\n\n\t\t<wsdl:operation name=\"RunAnalyticsReport\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:RunAnalyticsReportRequest\"/>\n\t\t\t<wsdl:output message=\"rnw_v1_2:RunAnalyticsReportResponse\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\t\t<!--
+        \ Miscellaneous operations  -->\n\n\t\t<wsdl:operation name=\"ExecuteMarketingFlow\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:ExecuteMarketingFlowRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ExecuteMarketingFlowResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetFileData\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetFileDataRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetFileDataResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"ResetContactPassword\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:ResetContactPasswordRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ResetContactPasswordResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"SendMailingToContact\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:SendMailingToContactRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:SendMailingToContactResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n
+        \       <wsdl:operation name=\"TransferSubObjects\">\n            <wsdl:input
+        message=\"rnw_v1_2:TransferSubObjectsRequest\"/>\n            <wsdl:output
+        message=\"rnw_v1_2:TransferSubObjectsResponse\"/>\n            <wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n            <wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n            <wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n
+        \       </wsdl:operation>\n\n\n\t\t<!--  Batch operations  -->\n\n\t\t<wsdl:operation
+        name=\"Batch\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:BatchRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:BatchResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\n\t\t<!--  Metadata
+        operations  -->\n\n\t\t<wsdl:operation name=\"GetMetaData\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:GetMetaDataRequest\"/>\n\t\t\t<wsdl:output message=\"rnw_v1_2:GetMetaDataResponse\"/>\n\t\t\t<wsdl:fault
+        name=\"RequestErrorFault\" message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\" message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"UnexpectedErrorFault\" message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetMetaDataForClass\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetMetaDataForClassRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetMetaDataForClassResponse\"/>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\"
+        message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault name=\"ServerErrorFault\"
+        message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\"
+        message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetMetaDataLastChangeTime\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetMetaDataLastChangeTimeRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetMetaDataLastChangeTimeResponse\"/>\n\t\t\t<wsdl:fault
+        name=\"RequestErrorFault\" message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\" message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"UnexpectedErrorFault\" message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedID\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetValuesForNamedIDRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetValuesForNamedIDResponse\"/>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\"
+        message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault name=\"ServerErrorFault\"
+        message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\"
+        message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedIDHierarchy\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetValuesForNamedIDHierarchyRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetValuesForNamedIDHierarchyResponse\"/>\n\t\t\t<wsdl:fault
+        name=\"RequestErrorFault\" message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\" message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"UnexpectedErrorFault\" message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n
+        \       <!--  Conversion operations for Generic Objects  -->\n\n\t\t<wsdl:operation
+        name=\"ConvertGenericToObject\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:ConvertGenericToObjectRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ConvertGenericToObjectResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\t\t<wsdl:operation
+        name=\"ConvertObjectToGeneric\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:ConvertObjectToGenericRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ConvertObjectToGenericResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t</wsdl:portType>\n\n\n\t<wsdl:binding
+        name=\"RightNowSyncBinding\" type=\"rnw_v1_2:RightNowSyncPort\">\n\t\t<wsp:PolicyReference
+        URI=\"#SyncPolicy\"\n\t\t\txmlns:wsp=\"http://schemas.xmlsoap.org/ws/2004/09/policy\"/>\n\t\t<soap:binding
+        style=\"document\"\n\t\t\ttransport=\"http://schemas.xmlsoap.org/soap/http\"/>\n\n\t\t<!--
+        \ Basic CRUD operations, plus batching  -->\n\t\n\t\t<wsdl:operation name=\"Create\">\n\t\t\t<soap:operation
+        soapAction=\"Create\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"Get\">\n\t\t\t<soap:operation soapAction=\"Get\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"Update\">\n\t\t\t<soap:operation soapAction=\"Update\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"Destroy\">\n\t\t\t<soap:operation soapAction=\"Destroy\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\n\t\t<!--
+        \ ROQL operations  -->\n\t\n\t\t<wsdl:operation name=\"QueryCSV\">\n\t\t\t<soap:operation
+        soapAction=\"QueryCSV\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"QueryObjects\">\n\t\t\t<soap:operation soapAction=\"QueryObjects\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\n\t\t<!--
+        \ RunAnalyticsReport operations  -->\n\n\t\t<wsdl:operation name=\"RunAnalyticsReport\">\n\t\t\t<soap:operation
+        soapAction=\"RunAnalyticsReport\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n\t\n\t\t<!--
+        \ Miscellaneous operations  -->\n\t\n\t\t<wsdl:operation name=\"ExecuteMarketingFlow\">\n\t\t\t<soap:operation
+        soapAction=\"ExecuteMarketingFlow\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetFileData\">\n\t\t\t<soap:operation soapAction=\"GetFileData\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"ResetContactPassword\">\n\t\t\t<soap:operation soapAction=\"ResetContactPassword\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"SendMailingToContact\">\n\t\t\t<soap:operation soapAction=\"SendMailingToContact\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n
+        \       <wsdl:operation name=\"TransferSubObjects\">\n            <soap:operation
+        soapAction=\"TransferSubObjects\" style=\"document\"/>\n                <wsdl:input>\n
+        \                   <soap:body parts=\"parameters\" use=\"literal\"/>\n                    <soap:header
+        message=\"rnw_v1_2:ClientInfoHeader\" part=\"request_header\" use=\"literal\"/>\n
+        \              </wsdl:input>\n               <wsdl:output>\n                   <soap:body
+        use=\"literal\"/>\n               </wsdl:output>\n               <wsdl:fault
+        name=\"RequestErrorFault\">\n                   <soap:fault name=\"RequestErrorFault\"
+        use=\"literal\"/>\n               </wsdl:fault>\n               <wsdl:fault
+        name=\"ServerErrorFault\">\n                   <soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n               </wsdl:fault>\n               <wsdl:fault
+        name=\"UnexpectedErrorFault\">\n                   <soap:fault name=\"UnexpectedErrorFault\"
+        use=\"literal\"/>\n               </wsdl:fault>\n        </wsdl:operation>\n\t\n\t\t<!--
+        \ Batch operations  -->\n\t\n\t\t<wsdl:operation name=\"Batch\">\n\t\t\t<soap:operation
+        soapAction=\"Batch\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n
+        \       <!--  Conversion operations for Generic Objects  -->\n\n\t\t<wsdl:operation
+        name=\"ConvertGenericToObject\">\n\t\t\t<soap:operation soapAction=\"ConvertGenericToObject\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n\t\t<wsdl:operation
+        name=\"ConvertObjectToGeneric\">\n\t\t\t<soap:operation soapAction=\"ConvertObjectToGeneric\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n\t\t<!--
+        \ Metadata operations  -->\n\t\n\t\t<wsdl:operation name=\"GetMetaData\">\n\t\t\t<soap:operation
+        soapAction=\"GetMetaData\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetMetaDataForClass\">\n\t\t\t<soap:operation soapAction=\"GetMetaDataForClass\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetMetaDataLastChangeTime\">\n\t\t\t<soap:operation soapAction=\"GetMetaDataLastChangeTime\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedID\">\n\t\t\t<soap:operation soapAction=\"GetValuesForNamedID\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedIDHierarchy\">\n\t\t\t<soap:operation soapAction=\"GetValuesForNamedIDHierarchy\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t</wsdl:binding>\n\n\n\t<wsdl:portType
+        name=\"RightNowFedAuthSyncPort\">\n\n\t\t<!--  Basic CRUD operations, plus
+        batching  -->\n\n\t\t<wsdl:operation name=\"Create\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:CreateRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:CreateResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"Get\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"Update\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:UpdateRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:UpdateResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"Destroy\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:DestroyRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:DestroyResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\t\t<!--  ROQL
+        operations  -->\n\n\t\t<wsdl:operation name=\"QueryObjects\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:QueryObjectsRequest\"/>\n\t\t\t<wsdl:output message=\"rnw_v1_2:QueryObjectsResponse\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"QueryCSV\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:QueryCSVRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:QueryCSVResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\t\t<!--  RunAnalyticsReport
+        operations  -->\n\n\t\t<wsdl:operation name=\"RunAnalyticsReport\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:RunAnalyticsReportRequest\"/>\n\t\t\t<wsdl:output message=\"rnw_v1_2:RunAnalyticsReportResponse\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\t\t<!--
+        \ Miscellaneous operations  -->\n\n\t\t<wsdl:operation name=\"ExecuteMarketingFlow\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:ExecuteMarketingFlowRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ExecuteMarketingFlowResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetFileData\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetFileDataRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetFileDataResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"ResetContactPassword\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:ResetContactPasswordRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ResetContactPasswordResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"SendMailingToContact\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:SendMailingToContactRequest\"></wsdl:input>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:SendMailingToContactResponse\"></wsdl:output>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n
+        \       <wsdl:operation name=\"TransferSubObjects\">\n            <wsdl:input
+        message=\"rnw_v1_2:TransferSubObjectsRequest\"/>\n            <wsdl:output
+        message=\"rnw_v1_2:TransferSubObjectsResponse\"/>\n            <wsdl:fault
+        message=\"rnw_v1_2:RequestErrorFault\" name=\"RequestErrorFault\"/>\n            <wsdl:fault
+        message=\"rnw_v1_2:ServerErrorFault\" name=\"ServerErrorFault\"/>\n            <wsdl:fault
+        message=\"rnw_v1_2:UnexpectedErrorFault\" name=\"UnexpectedErrorFault\"/>\n
+        \       </wsdl:operation>\n\n\n\t\t<!--  Batch operations  -->\n\n\t\t<wsdl:operation
+        name=\"Batch\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:BatchRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:BatchResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\n\n\t\t<!--  Metadata
+        operations  -->\n\n\t\t<wsdl:operation name=\"GetMetaData\">\n\t\t\t<wsdl:input
+        message=\"rnw_v1_2:GetMetaDataRequest\"/>\n\t\t\t<wsdl:output message=\"rnw_v1_2:GetMetaDataResponse\"/>\n\t\t\t<wsdl:fault
+        name=\"RequestErrorFault\" message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\" message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"UnexpectedErrorFault\" message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetMetaDataForClass\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetMetaDataForClassRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetMetaDataForClassResponse\"/>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\"
+        message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault name=\"ServerErrorFault\"
+        message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\"
+        message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetMetaDataLastChangeTime\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetMetaDataLastChangeTimeRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetMetaDataLastChangeTimeResponse\"/>\n\t\t\t<wsdl:fault
+        name=\"RequestErrorFault\" message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\" message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"UnexpectedErrorFault\" message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedID\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetValuesForNamedIDRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetValuesForNamedIDResponse\"/>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\"
+        message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault name=\"ServerErrorFault\"
+        message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\"
+        message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedIDHierarchy\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:GetValuesForNamedIDHierarchyRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:GetValuesForNamedIDHierarchyResponse\"/>\n\t\t\t<wsdl:fault
+        name=\"RequestErrorFault\" message=\"rnw_v1_2:RequestErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\" message=\"rnw_v1_2:ServerErrorFault\"/>\n\t\t\t<wsdl:fault
+        name=\"UnexpectedErrorFault\" message=\"rnw_v1_2:UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n
+        \       <!--  Conversion operations for Generic Objects  -->\n\n\t\t<wsdl:operation
+        name=\"ConvertGenericToObject\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:ConvertGenericToObjectRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ConvertGenericToObjectResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\n\t\t<wsdl:operation
+        name=\"ConvertObjectToGeneric\">\n\t\t\t<wsdl:input message=\"rnw_v1_2:ConvertObjectToGenericRequest\"/>\n\t\t\t<wsdl:output
+        message=\"rnw_v1_2:ConvertObjectToGenericResponse\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:RequestErrorFault\"
+        name=\"RequestErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:ServerErrorFault\"
+        name=\"ServerErrorFault\"/>\n\t\t\t<wsdl:fault message=\"rnw_v1_2:UnexpectedErrorFault\"
+        name=\"UnexpectedErrorFault\"/>\n\t\t</wsdl:operation>\n\t</wsdl:portType>\n\n\n\t<wsdl:binding
+        name=\"RightNowFedAuthSyncBinding\" type=\"rnw_v1_2:RightNowFedAuthSyncPort\">\n\t\t<wsp:PolicyReference
+        URI=\"#FedAuthSyncPolicy\"\n\t\t\txmlns:wsp=\"http://www.w3.org/ns/ws-policy\"/>\n\t\t<soap:binding
+        style=\"document\"\n\t\t\ttransport=\"http://schemas.xmlsoap.org/soap/http\"/>\n\n\t\t<!--
+        \ Basic CRUD operations, plus batching  -->\n\t\n\t\t<wsdl:operation name=\"Create\">\n\t\t\t<soap:operation
+        soapAction=\"Create\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"Get\">\n\t\t\t<soap:operation soapAction=\"Get\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"Update\">\n\t\t\t<soap:operation soapAction=\"Update\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"Destroy\">\n\t\t\t<soap:operation soapAction=\"Destroy\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\n\t\t<!--
+        \ ROQL operations  -->\n\t\n\t\t<wsdl:operation name=\"QueryCSV\">\n\t\t\t<soap:operation
+        soapAction=\"QueryCSV\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"QueryObjects\">\n\t\t\t<soap:operation soapAction=\"QueryObjects\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\n\t\t<!--
+        \ RunAnalyticsReport operations  -->\n\n\t\t<wsdl:operation name=\"RunAnalyticsReport\">\n\t\t\t<soap:operation
+        soapAction=\"RunAnalyticsReport\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n\t\n\t\t<!--
+        \ Miscellaneous operations  -->\n\t\n\t\t<wsdl:operation name=\"ExecuteMarketingFlow\">\n\t\t\t<soap:operation
+        soapAction=\"ExecuteMarketingFlow\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetFileData\">\n\t\t\t<soap:operation soapAction=\"GetFileData\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"ResetContactPassword\">\n\t\t\t<soap:operation soapAction=\"ResetContactPassword\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"SendMailingToContact\">\n\t\t\t<soap:operation soapAction=\"SendMailingToContact\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n
+        \       <wsdl:operation name=\"TransferSubObjects\">\n            <soap:operation
+        soapAction=\"TransferSubObjects\" style=\"document\"/>\n                <wsdl:input>\n
+        \                   <soap:body parts=\"parameters\" use=\"literal\"/>\n                    <soap:header
+        message=\"rnw_v1_2:ClientInfoHeader\" part=\"request_header\" use=\"literal\"/>\n
+        \              </wsdl:input>\n               <wsdl:output>\n                   <soap:body
+        use=\"literal\"/>\n               </wsdl:output>\n               <wsdl:fault
+        name=\"RequestErrorFault\">\n                   <soap:fault name=\"RequestErrorFault\"
+        use=\"literal\"/>\n               </wsdl:fault>\n               <wsdl:fault
+        name=\"ServerErrorFault\">\n                   <soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n               </wsdl:fault>\n               <wsdl:fault
+        name=\"UnexpectedErrorFault\">\n                   <soap:fault name=\"UnexpectedErrorFault\"
+        use=\"literal\"/>\n               </wsdl:fault>\n        </wsdl:operation>\n\t\n\n\t\t<!--
+        \ Batch operations  -->\n\t\n\t\t<wsdl:operation name=\"Batch\">\n\t\t\t<soap:operation
+        soapAction=\"Batch\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n
+        \       <!--  Conversion operations for Generic Objects  -->\n\n\t\t<wsdl:operation
+        name=\"ConvertGenericToObject\">\n\t\t\t<soap:operation soapAction=\"ConvertGenericToObject\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n\t\t<wsdl:operation
+        name=\"ConvertObjectToGeneric\">\n\t\t\t<soap:operation soapAction=\"ConvertObjectToGeneric\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\n\t\t<!--
+        \ Metadata operations  -->\n\t\n\t\t<wsdl:operation name=\"GetMetaData\">\n\t\t\t<soap:operation
+        soapAction=\"GetMetaData\" style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body
+        parts=\"parameters\" use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetMetaDataForClass\">\n\t\t\t<soap:operation soapAction=\"GetMetaDataForClass\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetMetaDataLastChangeTime\">\n\t\t\t<soap:operation soapAction=\"GetMetaDataLastChangeTime\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedID\">\n\t\t\t<soap:operation soapAction=\"GetValuesForNamedID\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t\n\t\t<wsdl:operation
+        name=\"GetValuesForNamedIDHierarchy\">\n\t\t\t<soap:operation soapAction=\"GetValuesForNamedIDHierarchy\"
+        style=\"document\"/>\n\t\t\t<wsdl:input>\n\t\t\t\t<soap:body parts=\"parameters\"
+        use=\"literal\"/>\n\t\t\t\t<soap:header message=\"rnw_v1_2:ClientInfoHeader\"
+        part=\"request_header\" use=\"literal\"/>\n\t\t\t</wsdl:input>\n\t\t\t<wsdl:output>\n\t\t\t\t<soap:body
+        use=\"literal\"/>\n\t\t\t</wsdl:output>\n\t\t\t<wsdl:fault name=\"RequestErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"RequestErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault
+        name=\"ServerErrorFault\">\n\t\t\t\t<soap:fault name=\"ServerErrorFault\"
+        use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t\t<wsdl:fault name=\"UnexpectedErrorFault\">\n\t\t\t\t<soap:fault
+        name=\"UnexpectedErrorFault\" use=\"literal\"/>\n\t\t\t</wsdl:fault>\n\t\t</wsdl:operation>\n\t</wsdl:binding>\n\n
+        \   <wsdl:service name=\"RightNowSyncService\">\n        <wsdl:port name=\"RightNowSyncPort\"
+        binding=\"rnw_v1_2:RightNowSyncBinding\">\n            <soap:address location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
+        \       </wsdl:port>\n        <wsdl:port name=\"RightNowFedAuthSyncPort\"
+        binding=\"rnw_v1_2:RightNowFedAuthSyncBinding\">\n            <soap:address
+        location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
+        \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
+    http_version: 
+  recorded_at: Sun, 08 Feb 2015 03:39:34 GMT
+- request:
+    method: post
+    uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
+    body:
+      encoding: UTF-8
+      string: |-
+        <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/">
+          <env:Header>
+            <message:ClientInfoHeader xmlns:message="urn:messages.ws.rightnow.com/v1_2" xmlns="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+              <AppID>Apptentive Integration</AppID>
+            </message:ClientInfoHeader>
+            <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" env:mustUnderstand="1">
+              <wsse:UsernameToken>
+                <wsse:Username>Apptentive</wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">AppPassword</wsse:Password>
+              </wsse:UsernameToken>
+            </wsse:Security>
+          </env:Header>
+          <env:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <message:Batch xmlns:message="urn:messages.ws.rightnow.com/v1_2">
+          <message:BatchRequestItem>
+            <message:CreateMsg>
+          <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Contact">
+            <base:ID id="0" variableName="MyNewContact" xsi:type="ChainSourceID"/>
+            <object:Emails>
+              <object:EmailList action="add">
+                <object:Address>mike+tester4@apptentive.com.invalid</object:Address>
+                <object:AddressType>
+                  <base:ID id="0"/>
+                </object:AddressType>
+              </object:EmailList>
+            </object:Emails>
+            <object:Name>
+              <object:First>Mike</object:First>
+              <object:Last>Tester</object:Last>
+            </object:Name>
+          </message:RNObjects>
+          <message:ProcessingOptions>
+            <message:SuppressExternalEvents>true</message:SuppressExternalEvents>
+            <message:SuppressRules>true</message:SuppressRules>
+          </message:ProcessingOptions>
+        </message:CreateMsg>
+          </message:BatchRequestItem>
+          <message:BatchRequestItem>
+            <message:GetMsg>
+              <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xsi:type="object:Contact">
+                <ID xmlns="urn:base.ws.rightnow.com/v1_2" xsi:type="ChainDestinationID" id="0" variableName="MyNewContact"/>
+                <object:Emails/>
+              </message:RNObjects>
+              <message:ProcessingOptions>
+                <message:FetchAllNames>false</message:FetchAllNames>
+              </message:ProcessingOptions>
+            </message:GetMsg>
+          </message:BatchRequestItem>
+        </message:Batch>
+          </env:Body>
+        </env:Envelope>
+    headers:
+      Soapaction:
+      - '"Batch"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '2461'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 08 Feb 2015 03:39:34 GMT
+      Server:
+      - Apache
+      Rnt-Time:
+      - D=393540 t=1423366774974289
+      Rnt-Machine:
+      - '0.81'
+      Content-Length:
+      - '380'
+      Content-Type:
+      - text/xml;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: |-
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:BatchResponse xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:faults.ws.rightnow.com/v1_2"><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>UNKNOWN_EXCEPTION</n1:exceptionCode><n1:exceptionMessage>Cannot save/create: Contact: (null)
+        While performing create on Contact</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>UNKNOWN_EXCEPTION</n1:exceptionCode><n1:exceptionMessage>Operation not attempted due to previous failure in transaction</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
+    http_version: 
+  recorded_at: Sun, 08 Feb 2015 03:39:35 GMT
+recorded_with: VCR 2.9.3

@@ -5,7 +5,7 @@ class RightNow::Client
   attr_reader :connection
 
   def initialize(wsdl, username, password, options = {})
-    raise RightNow::InvalidClient unless username && password
+    raise RightNow::InvalidClientError unless username && password
 
     @wsdl       = wsdl
     @username   = username
@@ -30,12 +30,24 @@ class RightNow::Client
     # will this only catch if the first one errors out?
     # what if the last one errors out?
     response_items = r.body[:batch_response][:batch_response_item]
+
     if error = response_items[0][:request_error_fault]
-      raise RightNow::InvalidObject.new(error[:exception_message])
+      message = error[:exception_message]
+
+      case message
+      when /invalid/i
+        raise RightNow::InvalidObjectError.new(message)
+      when /Cannot save\/create/
+        raise RightNow::DuplicateObjectError.new(message)
+      else
+        raise RightNow::Error.new(message)
+      end
     end
 
     a = response_items[1][:get_response_msg][:rn_objects_result][:rn_objects]
     object.create_from_response(a)
+  rescue Savon::SOAPFault => ex
+    raise RightNow::InvalidObjectError.new(ex.message)
   end
 
   def update(object)
@@ -45,9 +57,17 @@ class RightNow::Client
     #   raise RightNow::InvalidObject.new(error[:exception_message])
     # end
 
+    # possible error cases?
+    # - [ ] update closed incident
+    #     - no, it keeps posting, but doesn't change the status
+    # - [x] missing message
+    #   - caught by last rescue since the server kicks back hard
+
     a = response_items[1][:get_response_msg][:rn_objects_result][:rn_objects]
 
     object.create_from_response(a)
+  rescue Savon::SOAPFault => ex
+    raise RightNow::InvalidObjectError.new(ex.message)
   end
 
   def find(object)
@@ -81,5 +101,7 @@ class RightNow::Client
   end
 end
 
-class RightNow::InvalidClient < StandardError; end
-class RightNow::InvalidObject < StandardError; end
+class RightNow::Error < StandardError; end
+class RightNow::InvalidClientError < StandardError; end
+class RightNow::InvalidObjectError < StandardError; end
+class RightNow::DuplicateObjectError < StandardError; end

@@ -18,7 +18,7 @@ describe RightNow::Client do
         ].each do |user, pass|
           expect {
             RightNow::Client.new('http://url.com', user, pass)
-          }.to raise_error(RightNow::InvalidClient)
+          }.to raise_error(RightNow::InvalidClientError)
         end
       end
     end
@@ -44,7 +44,7 @@ describe RightNow::Client do
         it 'should return failure' do
           VCR.use_cassette('failed_incident') do
             incident = RightNow::Objects::Incident.new(message: 'forgot a contact_id')
-            expect { client.create(incident) }.to raise_error(RightNow::InvalidObject)
+            expect { client.create(incident) }.to raise_error(RightNow::InvalidObjectError)
           end
         end
       end
@@ -65,7 +65,12 @@ describe RightNow::Client do
       end
 
       context 'with duplicate email' do
-        it 'should raise a duplicate error'
+        it 'should raise a duplicate error' do
+          VCR.use_cassette('create_duplicate_contact', match_requests_on: [:method, :uri, :body]) do
+            contact = RightNow::Objects::Contact.new(first_name: 'Mike', last_name: 'Tester', email: 'mike+tester4@apptentive.com.invalid')
+            expect { client.create(contact) }.to raise_error(RightNow::DuplicateObjectError)
+          end
+        end
       end
     end
   end
@@ -82,6 +87,16 @@ describe RightNow::Client do
             expect(response.id).to eq '54947325'
             expect(response.subject).to eq 'Apptentive Message'
             expect(response.threads.length).to eq 8
+          end
+        end
+      end
+
+      context 'with invalid params' do
+        it 'should raise an error' do
+          VCR.use_cassette('update_invalid_incident', match_requests_on: [:method, :uri, :body]) do
+            # left off a message for the new thread
+            incident = RightNow::Objects::Incident.new(id: '54947325')
+            expect { client.update(incident)}.to raise_error(RightNow::InvalidObjectError)
           end
         end
       end
