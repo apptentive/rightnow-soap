@@ -38,4 +38,19 @@ describe RightNow::Objects::Incident do
       end
     end
   end
+
+  describe 'response' do
+    describe 'threads' do
+      # TODO: extract this to its own test and class
+      # we can also pull it out of the Incident XML builder
+      it 'should assign data to the right attributes' do
+        attributes = { id: 1, display_order: 2, text: 'testing' }
+        thread = RightNow::Objects::Incident::Thread.new(attributes)
+
+        attributes.each do |key, val|
+          expect(thread.public_send(key)).to eq val
+        end
+      end
+    end
+  end
 end

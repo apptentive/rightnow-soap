@@ -1,5 +1,13 @@
 class RightNow::Objects::Incident < RightNow::RNObject
-  class Thread < Struct.new(:id, :display_order, :text); end
+  class Thread
+    attr_accessor :id, :display_order, :text
+
+    def initialize(opts)
+      @id = opts[:id]
+      @display_order = opts[:display_order]
+      @text = opts[:text]
+    end
+  end
 
   attr_accessor :primary_contact_id, :message, :id, :subject, :threads
 
@@ -107,6 +115,8 @@ class RightNow::Objects::Incident < RightNow::RNObject
                   # 6 - Rule Response
                   # 7 - Rule Response Template
                   # 8 - Voice Integration
+
+                  # TODO: flip this based on who is sending the notification
                 xml[:base].ID(id: 3)
               end
               xml[:object].Text(message)
