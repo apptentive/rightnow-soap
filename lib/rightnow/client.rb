@@ -53,15 +53,6 @@ class RightNow::Client
   def update(object)
     r = connection.call(:batch, xml: soap_envelope { object.body(:update) } )
     response_items = r.body[:batch_response][:batch_response_item]
-    # if error = response_items[0][:request_error_fault]
-    #   raise RightNow::InvalidObject.new(error[:exception_message])
-    # end
-
-    # possible error cases?
-    # - [ ] update closed incident
-    #     - no, it keeps posting, but doesn't change the status
-    # - [x] missing message
-    #   - caught by last rescue since the server kicks back hard
 
     a = response_items[1][:get_response_msg][:rn_objects_result][:rn_objects]
 

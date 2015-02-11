@@ -29,11 +29,11 @@ describe RightNow::Client do
       context 'with valid parameters' do
         it 'should return an Incident with full attributes' do
           VCR.use_cassette('create_incident', match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test')
+            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test', app_id: 'ab123c')
             response = client.create(incident)
 
             expect(response).to be_a(RightNow::Objects::Incident)
-            expect(response.id).to eq '54947341'
+            expect(response.id).to eq '54947376'
             expect(response.subject).to eq 'Apptentive Message'
             expect(response.threads.length).to eq 1
           end
@@ -43,7 +43,7 @@ describe RightNow::Client do
       context 'with invalid parameters' do
         it 'should return failure' do
           VCR.use_cassette('failed_incident') do
-            incident = RightNow::Objects::Incident.new(message: 'forgot a contact_id')
+            incident = RightNow::Objects::Incident.new(message: 'forgot a contact_id', app_id: 'ab123c')
             expect { client.create(incident) }.to raise_error(RightNow::InvalidObjectError)
           end
         end

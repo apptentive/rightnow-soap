@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 09:25:57 GMT
+      - Wed, 11 Feb 2015 23:20:44 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=363037 t=1423301157843259
+      - D=358183 t=1423696844314946
       Rnt-Machine:
-      - '0.73'
+      - '0.85'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 09:26:02 GMT
+  recorded_at: Wed, 11 Feb 2015 23:20:45 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -779,6 +779,19 @@ http_interactions:
             <message:CreateMsg>
           <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Incident">
             <base:ID id="0" variableName="MyIncident" xsi:type="ChainSourceID"/>
+            <object:CustomFields>
+              <GenericFields xmlns="urn:generic.ws.rightnow.com/v1_2" name="c" dataType="OBJECT">
+                <DataValue>
+                  <ObjectValue>
+                    <GenericFields name="apptentive_app_id" dataType="STRING">
+                      <DataValue>
+                        <StringValue>ab123c</StringValue>
+                      </DataValue>
+                    </GenericFields>
+                  </ObjectValue>
+                </DataValue>
+              </GenericFields>
+            </object:CustomFields>
             <object:PrimaryContact>
               <object:Contact>
                 <base:ID id="27404751"/>
@@ -816,7 +829,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '2308'
+      - '2767'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -829,15 +842,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 09:26:03 GMT
+      - Wed, 11 Feb 2015 23:20:46 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=982112 t=1423301163468466
+      - D=333480 t=1423696846638504
       Rnt-Machine:
-      - '0.83'
+      - '0.96'
       Content-Length:
-      - '695'
+      - '693'
       Content-Type:
       - text/xml;charset=UTF-8
     body:
@@ -845,16 +858,16 @@ http_interactions:
       string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:BatchResponse
         xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:n2="urn:base.ws.rightnow.com/v1_2"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:objects.ws.rightnow.com/v1_2"><n0:BatchResponseItem><n0:CreateResponseMsg><n0:RNObjectsResult><n0:RNObjects
-        xsi:type="n1:Incident"><n2:ID id="54947341"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponseMsg></n0:BatchResponseItem><n0:BatchResponseItem><n0:GetResponseMsg><n0:RNObjectsResult><n0:RNObjects
-        xsi:type="n1:Incident"><n2:ID id="54947341"></n2:ID><n2:LookupName>150207-000000</n2:LookupName><n2:CreatedTime>2015-02-07T09:26:03.000Z</n2:CreatedTime><n2:UpdatedTime>2015-02-07T09:26:03.000Z</n2:UpdatedTime><n1:CreatedByAccount><n2:ID
-        id="61197"></n2:ID></n1:CreatedByAccount><n1:InitialResponseDueTime>2015-02-10T01:00:00.000Z</n1:InitialResponseDueTime><n1:Interface><n2:ID
+        xsi:type="n1:Incident"><n2:ID id="54947376"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponseMsg></n0:BatchResponseItem><n0:BatchResponseItem><n0:GetResponseMsg><n0:RNObjectsResult><n0:RNObjects
+        xsi:type="n1:Incident"><n2:ID id="54947376"></n2:ID><n2:LookupName>150211-000005</n2:LookupName><n2:CreatedTime>2015-02-11T23:20:46.000Z</n2:CreatedTime><n2:UpdatedTime>2015-02-11T23:20:46.000Z</n2:UpdatedTime><n1:CreatedByAccount><n2:ID
+        id="61197"></n2:ID></n1:CreatedByAccount><n1:InitialResponseDueTime>2015-02-12T23:20:00.000Z</n1:InitialResponseDueTime><n1:Interface><n2:ID
         id="2"></n2:ID></n1:Interface><n1:Language><n2:ID id="1"></n2:ID></n1:Language><n1:PrimaryContact><n1:Contact><n2:ID
-        id="27404751"></n2:ID></n1:Contact></n1:PrimaryContact><n1:ReferenceNumber>150207-000000</n1:ReferenceNumber><n1:SmartSenseCustomer>0</n1:SmartSenseCustomer><n1:SmartSenseStaff>0</n1:SmartSenseStaff><n1:Source><n2:ID
+        id="27404751"></n2:ID></n1:Contact></n1:PrimaryContact><n1:ReferenceNumber>150211-000005</n1:ReferenceNumber><n1:SmartSenseCustomer>0</n1:SmartSenseCustomer><n1:SmartSenseStaff>0</n1:SmartSenseStaff><n1:Source><n2:ID
         id="6006"></n2:ID><n2:Parents xsi:type="n2:NamedReadOnlyID"><n2:ID id="32007"></n2:ID></n2:Parents></n1:Source><n1:StatusWithType><n1:Status><n2:ID
         id="1"></n2:ID></n1:Status><n1:StatusType><n2:ID id="1"></n2:ID></n1:StatusType></n1:StatusWithType><n1:Subject>Apptentive
         Message</n1:Subject><n1:Threads><n1:ThreadList><n1:Contact><n2:ID id="27404751"></n2:ID></n1:Contact><n1:ContentType><n2:ID
-        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-07T09:26:03.000Z</n1:CreatedTime><n1:DisplayOrder>1</n1:DisplayOrder><n1:EntryType><n2:ID
-        id="3"></n2:ID></n1:EntryType><n1:ID id="61485452"></n1:ID><n1:Text>test</n1:Text></n1:ThreadList></n1:Threads></n0:RNObjects></n0:RNObjectsResult></n0:GetResponseMsg></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-11T23:20:46.000Z</n1:CreatedTime><n1:DisplayOrder>1</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485467"></n1:ID><n1:Text>test</n1:Text></n1:ThreadList></n1:Threads></n0:RNObjects></n0:RNObjectsResult></n0:GetResponseMsg></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 09:26:06 GMT
+  recorded_at: Wed, 11 Feb 2015 23:20:47 GMT
 recorded_with: VCR 2.9.3

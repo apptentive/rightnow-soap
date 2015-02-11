@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 09:33:25 GMT
+      - Wed, 11 Feb 2015 23:20:47 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=130728 t=1423301605960116
+      - D=418732 t=1423696847285713
       Rnt-Machine:
-      - '0.67'
+      - '0.71'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 09:33:31 GMT
+  recorded_at: Wed, 11 Feb 2015 23:20:48 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -779,6 +779,19 @@ http_interactions:
             <message:CreateMsg>
           <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Incident">
             <base:ID id="0" variableName="MyIncident" xsi:type="ChainSourceID"/>
+            <object:CustomFields>
+              <GenericFields xmlns="urn:generic.ws.rightnow.com/v1_2" name="c" dataType="OBJECT">
+                <DataValue>
+                  <ObjectValue>
+                    <GenericFields name="apptentive_app_id" dataType="STRING">
+                      <DataValue>
+                        <StringValue>ab123c</StringValue>
+                      </DataValue>
+                    </GenericFields>
+                  </ObjectValue>
+                </DataValue>
+              </GenericFields>
+            </object:CustomFields>
             <object:PrimaryContact>
               <object:Contact>
                 <base:ID id=""/>
@@ -816,7 +829,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '2315'
+      - '2774'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -829,13 +842,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 09:33:31 GMT
+      - Wed, 11 Feb 2015 23:20:48 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=155031 t=1423301611896281
+      - D=164524 t=1423696848519884
       Rnt-Machine:
-      - '0.83'
+      - '0.97'
       Content-Length:
       - '433'
       Content-Type:
@@ -846,5 +859,5 @@ http_interactions:
         <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:BatchResponse xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:faults.ws.rightnow.com/v1_2"><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>BAD_ID</n1:exceptionCode><n1:exceptionMessage>Invalid ID: ID of 0 is invalid for a Contact
         While processing Incident-&gt;PrimaryContact(rno_v1_2::IncidentContact)-&gt;Contact(rnb_v1_2::NamedID).</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>UNKNOWN_EXCEPTION</n1:exceptionCode><n1:exceptionMessage>Operation not attempted due to previous failure in transaction</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 09:33:34 GMT
+  recorded_at: Wed, 11 Feb 2015 23:20:48 GMT
 recorded_with: VCR 2.9.3

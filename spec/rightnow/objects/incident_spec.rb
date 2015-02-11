@@ -3,7 +3,7 @@ require 'spec_helper'
 describe RightNow::Objects::Incident do
   describe '#body' do
     context 'for create' do
-      let(:incident) { RightNow::Objects::Incident.new(contact_id: 1, message: 'new incident') }
+      let(:incident) { RightNow::Objects::Incident.new(contact_id: 1, message: 'new incident', app_id: 'ab123c') }
 
       it 'should contain a contact_id' do
         expect(incident.body(:create)).to include('1')
@@ -11,6 +11,17 @@ describe RightNow::Objects::Incident do
 
       it 'should contain a new thread' do
         expect(incident.body(:create)).to include('new incident')
+      end
+
+      it 'should contain the app id' do
+        expect(incident.body(:create)).to include('ab123c')
+      end
+
+      context 'without an app id' do
+        it 'should raise an error' do
+          incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test')
+          expect { incident.body(:create) }.to raise_error(RightNow::InvalidObjectError)
+        end
       end
     end
 

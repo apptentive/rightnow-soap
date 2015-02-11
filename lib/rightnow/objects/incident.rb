@@ -2,31 +2,33 @@ class RightNow::Objects::Incident < RightNow::RNObject
   class Thread
     attr_accessor :id, :display_order, :text
 
-    def initialize(opts)
-      @id = opts[:id]
-      @display_order = opts[:display_order]
-      @text = opts[:text]
+    def initialize(params)
+      @id            = params[:id]
+      @display_order = params[:display_order]
+      @text          = params[:text]
     end
   end
 
-  attr_accessor :primary_contact_id, :message, :id, :subject, :threads
+  attr_accessor :primary_contact_id, :message, :id, :subject, :threads, :app_id
 
   def initialize(params)
     @type = 'Incident'
 
     # when building a response object (:id in both)
-    @id = params[:id]
-    @subject = params[:subject] || 'Apptentive Message'
-    @threads = params[:threads]
+    @id                 = params[:id]
+    @subject            = params[:subject] || 'Apptentive Message'
+    @threads            = params[:threads]
 
-    # when requesting info from server
-    @message = params[:message]
+    # when creating an incident
+    @message            = params[:message]
+    @app_id             = params[:app_id]
     @primary_contact_id = params[:contact_id]
   end
 
   def body(action)
     case action
     when :create
+      validate_incident
       incident_modification_wrapper { create_incident }
     when :update
       incident_modification_wrapper { update_incident }
@@ -43,6 +45,14 @@ class RightNow::Objects::Incident < RightNow::RNObject
   end
 
   private
+
+  def validate_incident
+    raise RightNow::InvalidObjectError.new('Incidents must be created with an Apptentive app_id') unless has_app_id?
+  end
+
+  def has_app_id?
+    app_id && !app_id.strip.empty?
+  end
 
   def build_threads(thread_list)
     [thread_list].flatten.map do |raw|
@@ -78,6 +88,19 @@ class RightNow::Objects::Incident < RightNow::RNObject
       xml.CreateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
         xml.RNObjects('xsi:type' => 'object:Incident', 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
           xml[:base].ID('xmlns:base' => 'urn:base.ws.rightnow.com/v1_2', 'xsi:type' => 'ChainSourceID', 'id' => '0', 'variableName' => 'MyIncident')
+          xml[:object].CustomFields do
+            xml.GenericFields('name' => 'c', 'dataType' => 'OBJECT', 'xmlns' => 'urn:generic.ws.rightnow.com/v1_2') do
+              xml.DataValue do
+                xml.ObjectValue do
+                  xml.GenericFields('name' => 'apptentive_app_id', 'dataType' => 'STRING') do
+                    xml.DataValue do
+                      xml.StringValue(app_id)
+                    end
+                  end
+                end
+              end
+            end
+          end
           xml[:object].PrimaryContact do
             xml[:object].Contact do
               xml[:base].ID(id: primary_contact_id)
