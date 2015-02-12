@@ -17,6 +17,14 @@ class RightNow::Client
     )
   end
 
+  def connected?
+    test_incident = RightNow::Objects::Incident.new(id: 1)
+    connection.call(:query_objects, xml: soap_envelope { test_incident.body(:find) } )
+    true
+  rescue Savon::SOAPFault
+    false
+  end
+
   def create(object)
     # Request.call(:batch, xml: soap_envelope { object.body(:create) } )
     # Request.call(:create, object, self)

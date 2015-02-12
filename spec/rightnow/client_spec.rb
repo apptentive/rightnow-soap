@@ -24,6 +24,27 @@ describe RightNow::Client do
     end
   end
 
+  describe '#connected?' do
+
+    context 'when connected' do
+      it 'should return true' do
+        VCR.use_cassette('successful_connection', match_requests_on: [:method, :uri, :body]) do
+          expect(client.connected?).to be_truthy
+        end
+      end
+    end
+
+    context 'when not connected' do
+      let(:client) { RightNow::Client.new("https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap?wsdl",
+                            "Apptentive", "WrongPassword") }
+      it 'should return false' do
+        VCR.use_cassette('failed_connection', match_requests_on: [:method, :uri, :body]) do
+          expect(client.connected?).to be_falsy
+        end
+      end
+    end
+  end
+
   describe '#create' do
     context 'Incident' do
       context 'with valid parameters' do
@@ -96,7 +117,7 @@ describe RightNow::Client do
           VCR.use_cassette('update_invalid_incident', match_requests_on: [:method, :uri, :body]) do
             # left off a message for the new thread
             incident = RightNow::Objects::Incident.new(id: '54947325')
-            expect { client.update(incident)}.to raise_error(RightNow::InvalidObjectError)
+            expect { client.update(incident) }.to raise_error(RightNow::InvalidObjectError)
           end
         end
       end
