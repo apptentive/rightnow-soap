@@ -35,6 +35,21 @@ describe RightNow::Objects::Incident do
       it 'should contain a new thread' do
         expect(incident.body(:update)).to include('new incident')
       end
+
+      describe 'entry type' do
+        context 'when sent by an agent' do
+          it 'should tag the thread to the agent' do
+            incident.from_agent = true
+            expect(incident.body(:update)).to include('<base:ID id="2"/>')
+          end
+        end
+
+        context 'when sent by a customer' do
+          it 'should tag the thread to the customer' do
+            expect(incident.body(:update)).to include('<base:ID id="3"/>')
+          end
+        end
+      end
     end
 
     context 'for find' do

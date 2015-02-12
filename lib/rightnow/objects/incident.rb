@@ -9,7 +9,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
     end
   end
 
-  attr_accessor :primary_contact_id, :message, :id, :subject, :threads, :app_id
+  attr_accessor :primary_contact_id, :message, :id, :subject, :threads, :app_id, :from_agent
 
   def initialize(params)
     @type = 'Incident'
@@ -18,6 +18,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
     @id                 = params[:id]
     @subject            = params[:subject] || 'Apptentive Message'
     @threads            = params[:threads]
+    @from_agent         = !!params[:from_agent]
 
     # when creating an incident
     @message            = params[:message]
@@ -140,7 +141,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
                   # 8 - Voice Integration
 
                   # TODO: flip this based on who is sending the notification
-                xml[:base].ID(id: 3)
+                xml[:base].ID(id: entry_type)
               end
               xml[:object].Text(message)
             end
@@ -160,5 +161,9 @@ class RightNow::Objects::Incident < RightNow::RNObject
         xml.PageSize('100')
       end
     end.doc.root.to_xml
+  end
+
+  def entry_type
+    from_agent ? 2 : 3
   end
 end
