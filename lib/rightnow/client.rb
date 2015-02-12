@@ -2,7 +2,7 @@ require 'savon'
 
 class RightNow::Client
   attr_accessor :wsdl, :username, :password, :options
-  attr_reader :connection
+  attr_reader :connection, :error_message
 
   def initialize(wsdl, username, password, options = {})
     raise RightNow::InvalidClientError unless username && password
@@ -21,7 +21,8 @@ class RightNow::Client
     test_incident = RightNow::Objects::Incident.new(id: 1)
     connection.call(:query_objects, xml: soap_envelope { test_incident.body(:find) } )
     true
-  rescue Savon::SOAPFault
+  rescue Savon::SOAPFault => ex
+    self.error_message = ex.message.match(/\(.*\) (.*)/)[1] || ex.message
     false
   end
 
@@ -77,6 +78,7 @@ class RightNow::Client
   end
 
   private
+  attr_writer :error_message
 
   def soap_envelope
     Nokogiri::XML::Builder.new do |xml|

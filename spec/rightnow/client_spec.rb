@@ -41,6 +41,13 @@ describe RightNow::Client do
           expect(client.connected?).to be_falsy
         end
       end
+
+      it 'should set an error message on the client' do
+        VCR.use_cassette('failed_connection', match_requests_on: [:method, :uri, :body]) do
+          expect(client.connected?).to be_falsy
+          expect(client.error_message).to eq 'Access Denied'
+        end
+      end
     end
   end
 
