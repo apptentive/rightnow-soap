@@ -16,7 +16,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
 
     # when building a response object (:id in both)
     @id                 = params[:id]
-    @subject            = params[:subject] || 'Apptentive Message'
+    @subject            = params[:subject]
     @threads            = params[:threads]
     @from_agent         = !!params[:from_agent]
 
@@ -41,7 +41,8 @@ class RightNow::Objects::Incident < RightNow::RNObject
   # this knows the response format, which may be a different responsibility
   def create_from_response(incident_params)
     RightNow::Objects::Incident.new(id: incident_params[:id][:@id],
-      threads: build_threads(incident_params[:threads][:thread_list])
+      threads: build_threads(incident_params[:threads][:thread_list]),
+      subject: incident_params[:subject]
     )
   end
 

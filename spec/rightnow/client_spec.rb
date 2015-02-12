@@ -25,7 +25,6 @@ describe RightNow::Client do
   end
 
   describe '#connected?' do
-
     context 'when connected' do
       it 'should return true' do
         VCR.use_cassette('successful_connection', match_requests_on: [:method, :uri, :body]) do
@@ -50,7 +49,7 @@ describe RightNow::Client do
       context 'with valid parameters' do
         it 'should return an Incident with full attributes' do
           VCR.use_cassette('create_incident', match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test', app_id: 'ab123c')
+            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test', app_id: 'ab123c', subject: 'Apptentive Message')
             response = client.create(incident)
 
             expect(response).to be_a(RightNow::Objects::Incident)
@@ -64,7 +63,7 @@ describe RightNow::Client do
       context 'with invalid parameters' do
         it 'should return failure' do
           VCR.use_cassette('failed_incident') do
-            incident = RightNow::Objects::Incident.new(message: 'forgot a contact_id', app_id: 'ab123c')
+            incident = RightNow::Objects::Incident.new(message: 'forgot a contact_id', app_id: 'ab123c', subject: 'Apptentive Message')
             expect { client.create(incident) }.to raise_error(RightNow::InvalidObjectError)
           end
         end

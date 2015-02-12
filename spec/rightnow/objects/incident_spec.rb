@@ -3,18 +3,17 @@ require 'spec_helper'
 describe RightNow::Objects::Incident do
   describe '#body' do
     context 'for create' do
-      let(:incident) { RightNow::Objects::Incident.new(contact_id: 1, message: 'new incident', app_id: 'ab123c') }
+      let(:incident) { RightNow::Objects::Incident.new(contact_id: 1, message: 'new incident', app_id: 'ab123c', subject: 'New Incident Subject') }
 
-      it 'should contain a contact_id' do
-        expect(incident.body(:create)).to include('1')
-      end
-
-      it 'should contain a new thread' do
-        expect(incident.body(:create)).to include('new incident')
-      end
-
-      it 'should contain the app id' do
-        expect(incident.body(:create)).to include('ab123c')
+      {
+        contact_id: '1',
+        message: 'new incident',
+        app_id: 'ab123c',
+        subject: 'New Incident Subject'
+      }.each do |attr, value|
+        it "should contain a #{attr}" do
+          expect(incident.body(:create)).to include(value)
+        end
       end
 
       context 'without an app id' do
