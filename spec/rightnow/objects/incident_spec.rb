@@ -78,4 +78,23 @@ describe RightNow::Objects::Incident do
       end
     end
   end
+
+  describe '#most_recent_thread' do
+    let(:incident) { RightNow::Objects::Incident.new(contact_id: 1, message: 'new incident', app_id: 'ab123c') }
+    let(:thread1) { RightNow::Objects::Incident::Thread.new(text: 'first', display_order: 1) }
+    let(:thread2) { RightNow::Objects::Incident::Thread.new(text: 'last', display_order: 2) }
+
+    context 'with threads' do
+      it 'should return the highest in the display order' do
+        incident.threads = [thread1, thread2]
+        expect(incident.most_recent_thread).to eq thread2
+      end
+    end
+
+    context 'with no threads' do
+      it 'should return nil' do
+        expect(incident.most_recent_thread).to be_nil
+      end
+    end
+  end
 end

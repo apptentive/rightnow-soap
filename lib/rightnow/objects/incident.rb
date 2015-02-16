@@ -17,7 +17,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
     # when building a response object (:id in both)
     @id                 = params[:id]
     @subject            = params[:subject]
-    @threads            = params[:threads]
+    @threads            = params[:threads] || []
     @from_agent         = !!params[:from_agent]
 
     # when creating an incident
@@ -36,6 +36,10 @@ class RightNow::Objects::Incident < RightNow::RNObject
     when :find
       find_incident
     end
+  end
+
+  def most_recent_thread
+    threads.max_by(&:display_order)
   end
 
   # this knows the response format, which may be a different responsibility
