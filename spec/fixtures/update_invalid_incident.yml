@@ -753,7 +753,7 @@ http_interactions:
         binding=\"rnw_v1_2:RightNowFedAuthSyncBinding\">\n            <soap:address
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
-    http_version: 
+    http_version:
   recorded_at: Sun, 08 Feb 2015 03:24:51 GMT
 - request:
     method: post
@@ -788,6 +788,10 @@ http_interactions:
               </object:ThreadList>
             </object:Threads>
           </message:RNObjects>
+          <message:ProcessingOptions>
+            <message:SuppressExternalEvents>false</message:SuppressExternalEvents>
+            <message:SuppressRules>false</message:SuppressRules>
+          </message:ProcessingOptions>
         </message:UpdateMsg>
           </message:BatchRequestItem>
           <message:BatchRequestItem>
@@ -852,6 +856,6 @@ http_interactions:
         Failed in setting value for element BatchRequestItem array position 0 of object BatchMsg
         Failure in setting value for object Batch element Batch of type messages_ws_rightnow_com_v1_2::BatchMsg
         NULL returned from the Batch deserializer due to missing or invalid XML</fault></detail></soapenv:Fault></soapenv:Body></soapenv:Envelope>
-    http_version: 
+    http_version:
   recorded_at: Sun, 08 Feb 2015 03:24:52 GMT
 recorded_with: VCR 2.9.3

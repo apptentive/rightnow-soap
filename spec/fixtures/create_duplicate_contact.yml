@@ -753,7 +753,7 @@ http_interactions:
         binding=\"rnw_v1_2:RightNowFedAuthSyncBinding\">\n            <soap:address
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
-    http_version: 
+    http_version:
   recorded_at: Sun, 08 Feb 2015 03:39:34 GMT
 - request:
     method: post
@@ -793,8 +793,8 @@ http_interactions:
             </object:Name>
           </message:RNObjects>
           <message:ProcessingOptions>
-            <message:SuppressExternalEvents>true</message:SuppressExternalEvents>
-            <message:SuppressRules>true</message:SuppressRules>
+            <message:SuppressExternalEvents>false</message:SuppressExternalEvents>
+            <message:SuppressRules>false</message:SuppressRules>
           </message:ProcessingOptions>
         </message:CreateMsg>
           </message:BatchRequestItem>
@@ -847,6 +847,6 @@ http_interactions:
       string: |-
         <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:BatchResponse xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:faults.ws.rightnow.com/v1_2"><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>UNKNOWN_EXCEPTION</n1:exceptionCode><n1:exceptionMessage>Cannot save/create: Contact: (null)
         While performing create on Contact</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem><n0:BatchResponseItem><n0:RequestErrorFault xsi:type="n1:RequestErrorFaultType"><n1:exceptionCode>UNKNOWN_EXCEPTION</n1:exceptionCode><n1:exceptionMessage>Operation not attempted due to previous failure in transaction</n1:exceptionMessage></n0:RequestErrorFault></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
-    http_version: 
+    http_version:
   recorded_at: Sun, 08 Feb 2015 03:39:35 GMT
 recorded_with: VCR 2.9.3

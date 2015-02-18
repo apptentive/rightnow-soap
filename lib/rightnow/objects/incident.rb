@@ -123,6 +123,11 @@ class RightNow::Objects::Incident < RightNow::RNObject
             end
           end
         end
+
+        xml.ProcessingOptions do
+          xml.SuppressExternalEvents('false')
+          xml.SuppressRules('false')
+        end
       end
     end.doc.root.to_xml
   end
@@ -151,6 +156,11 @@ class RightNow::Objects::Incident < RightNow::RNObject
               xml[:object].Text(message)
             end
           end
+        end
+
+        xml.ProcessingOptions do
+          xml.SuppressExternalEvents('false')
+          xml.SuppressRules('false')
         end
       end
     end.doc.root.to_xml

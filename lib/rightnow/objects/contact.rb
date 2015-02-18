@@ -21,10 +21,10 @@ class RightNow::Objects::Contact < RightNow::RNObject
 
   def create_from_response(contact_params)
     RightNow::Objects::Contact.new(
-      id: contact_params[:id][:@id],
-      first_name: contact_params[:name][:first],
-      last_name: contact_params[:name][:last],
-      email: (email_from_response(contact_params[:emails][:email_list]) if contact_params[:emails]) # TODO what if there are two addresses?
+            id: contact_params[:id][:@id],
+    first_name: contact_params[:name][:first],
+     last_name: contact_params[:name][:last],
+         email: (email_from_response(contact_params[:emails][:email_list]) if contact_params[:emails]) # TODO what if there are two addresses?
     )
   end
 
@@ -81,15 +81,14 @@ class RightNow::Objects::Contact < RightNow::RNObject
         end
 
         xml.ProcessingOptions do
-          xml.SuppressExternalEvents('true')
-          xml.SuppressRules('true')
+          xml.SuppressExternalEvents('false')
+          xml.SuppressRules('false')
         end
       end
     end.doc.root.to_xml
   end
 
   def find_contact
-    # wrapper
     Nokogiri::XML::Builder.new do |xml|
       xml.QueryObjects('xmlns' => "urn:messages.ws.rightnow.com/v1_2") do
         xml.Query("SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = '#{email}'")

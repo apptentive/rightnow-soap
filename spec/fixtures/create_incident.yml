@@ -753,7 +753,7 @@ http_interactions:
         binding=\"rnw_v1_2:RightNowFedAuthSyncBinding\">\n            <soap:address
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
-    http_version: 
+    http_version:
   recorded_at: Wed, 11 Feb 2015 23:20:45 GMT
 - request:
     method: post
@@ -807,6 +807,10 @@ http_interactions:
               </object:ThreadList>
             </object:Threads>
           </message:RNObjects>
+          <message:ProcessingOptions>
+            <message:SuppressExternalEvents>false</message:SuppressExternalEvents>
+            <message:SuppressRules>false</message:SuppressRules>
+          </message:ProcessingOptions>
         </message:CreateMsg>
           </message:BatchRequestItem>
           <message:BatchRequestItem>
@@ -868,6 +872,6 @@ http_interactions:
         Message</n1:Subject><n1:Threads><n1:ThreadList><n1:Contact><n2:ID id="27404751"></n2:ID></n1:Contact><n1:ContentType><n2:ID
         id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-11T23:20:46.000Z</n1:CreatedTime><n1:DisplayOrder>1</n1:DisplayOrder><n1:EntryType><n2:ID
         id="3"></n2:ID></n1:EntryType><n1:ID id="61485467"></n1:ID><n1:Text>test</n1:Text></n1:ThreadList></n1:Threads></n0:RNObjects></n0:RNObjectsResult></n0:GetResponseMsg></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
-    http_version: 
+    http_version:
   recorded_at: Wed, 11 Feb 2015 23:20:47 GMT
 recorded_with: VCR 2.9.3

@@ -753,7 +753,7 @@ http_interactions:
         binding=\"rnw_v1_2:RightNowFedAuthSyncBinding\">\n            <soap:address
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
-    http_version: 
+    http_version:
   recorded_at: Sat, 07 Feb 2015 09:09:45 GMT
 - request:
     method: post
@@ -793,8 +793,8 @@ http_interactions:
             </object:Name>
           </message:RNObjects>
           <message:ProcessingOptions>
-            <message:SuppressExternalEvents>true</message:SuppressExternalEvents>
-            <message:SuppressRules>true</message:SuppressRules>
+            <message:SuppressExternalEvents>false</message:SuppressExternalEvents>
+            <message:SuppressRules>false</message:SuppressRules>
           </message:ProcessingOptions>
         </message:CreateMsg>
           </message:BatchRequestItem>
@@ -851,6 +851,6 @@ http_interactions:
         xsi:type="n1:Contact"><n2:ID id="27404760"></n2:ID><n2:LookupName>Mike Tester</n2:LookupName><n2:CreatedTime>2015-02-07T09:09:44.000Z</n2:CreatedTime><n2:UpdatedTime>2015-02-07T09:09:44.000Z</n2:UpdatedTime><n1:CRMModules><n1:Marketing>true</n1:Marketing><n1:Sales>true</n1:Sales><n1:Service>true</n1:Service></n1:CRMModules><n1:Disabled>false</n1:Disabled><n1:Emails><n1:EmailList><n1:Address>mike+tester4@apptentive.com.invalid</n1:Address><n1:AddressType><n2:ID
         id="0"></n2:ID></n1:AddressType><n1:Invalid>false</n1:Invalid></n1:EmailList></n1:Emails><n1:Name><n1:First>Mike</n1:First><n1:Last>Tester</n1:Last></n1:Name><n1:Source><n2:ID
         id="6006"></n2:ID><n2:Parents xsi:type="n2:NamedReadOnlyID"><n2:ID id="32007"></n2:ID></n2:Parents></n1:Source></n0:RNObjects></n0:RNObjectsResult></n0:GetResponseMsg></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
-    http_version: 
+    http_version:
   recorded_at: Sat, 07 Feb 2015 09:09:46 GMT
 recorded_with: VCR 2.9.3
