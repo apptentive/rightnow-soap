@@ -26,6 +26,14 @@ class RightNow::Objects::Incident < RightNow::RNObject
     @primary_contact_id = params[:contact_id]
   end
 
+  def self.create_from_response(incident_params)
+    RightNow::Objects::Incident.new(
+           id: incident_params[:id][:@id],
+      threads: (build_threads(incident_params[:threads][:thread_list]) if incident_params[:threads]),
+      subject: incident_params[:subject]
+    )
+  end
+
   def body(action)
     case action
     when :create
@@ -42,15 +50,6 @@ class RightNow::Objects::Incident < RightNow::RNObject
     threads.max_by(&:display_order)
   end
 
-  # this knows the response format, which may be a different responsibility
-  def create_from_response(incident_params)
-    RightNow::Objects::Incident.new(
-           id: incident_params[:id][:@id],
-      threads: (build_threads(incident_params[:threads][:thread_list]) if incident_params[:threads]),
-      subject: incident_params[:subject]
-    )
-  end
-
   private
 
   def validate_incident
@@ -61,7 +60,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
     app_id && !app_id.strip.empty?
   end
 
-  def build_threads(thread_list)
+  def self.build_threads(thread_list)
     [thread_list].flatten.map do |raw|
       Thread.new(id: raw[:id][:@id], display_order: raw[:display_order], text: raw[:text])
     end

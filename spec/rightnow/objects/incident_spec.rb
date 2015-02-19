@@ -103,7 +103,7 @@ describe RightNow::Objects::Incident do
       it 'should skip these attributes and not raise an error' do
         response = {id: { :@id => '123'}}
 
-        expect { RightNow::Objects::Incident.new({}).create_from_response(response) }.to_not raise_error
+        expect { RightNow::Objects::Incident.create_from_response(response) }.to_not raise_error
       end
     end
   end

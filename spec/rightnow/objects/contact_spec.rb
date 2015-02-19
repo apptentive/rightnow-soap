@@ -43,7 +43,7 @@ describe RightNow::Objects::Contact do
       it 'should skip these attributes and not raise an error' do
         response = {id: { :@id => '123'}}
 
-        expect { RightNow::Objects::Contact.new({}).create_from_response(response) }.to_not raise_error
+        expect { RightNow::Objects::Contact.create_from_response(response) }.to_not raise_error
       end
     end
   end

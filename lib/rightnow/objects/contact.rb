@@ -10,6 +10,15 @@ class RightNow::Objects::Contact < RightNow::RNObject
     @last_name  = params[:last_name]
   end
 
+  def self.create_from_response(contact_params)
+    RightNow::Objects::Contact.new(
+            id: contact_params[:id][:@id],
+    first_name: (contact_params[:name][:first] if contact_params[:name]),
+     last_name: (contact_params[:name][:last] if contact_params[:name]),
+         email: (email_from_response(contact_params.fetch(:emails){{}}[:email_list]) if contact_params[:emails]) # TODO what if there are two addresses?
+    )
+  end
+
   def body(action)
     case action
     when :create
@@ -19,18 +28,9 @@ class RightNow::Objects::Contact < RightNow::RNObject
     end
   end
 
-  def create_from_response(contact_params)
-    RightNow::Objects::Contact.new(
-            id: contact_params[:id][:@id],
-    first_name: (contact_params[:name][:first] if contact_params[:name]),
-     last_name: (contact_params[:name][:last] if contact_params[:name]),
-         email: (email_from_response(contact_params.fetch(:emails){{}}[:email_list]) if contact_params[:emails]) # TODO what if there are two addresses?
-    )
-  end
-
   private
 
-  def email_from_response(list)
+  def self.email_from_response(list)
     if list.is_a?(Array)
       list.detect { |address| address[:address_type][:id][:@id] == '0' }[:address]
     else

@@ -27,12 +27,6 @@ class RightNow::Client
   end
 
   def create(object)
-    # Request.call(:batch, xml: soap_envelope { object.body(:create) } )
-    # Request.call(:create, object, self)
-    # Response.process do
-
-    # end
-
     r = connection.call(:batch, xml: soap_envelope { object.body(:create) } )
 
     # batch requests return an array of request items
@@ -54,7 +48,7 @@ class RightNow::Client
     end
 
     a = response_items[1][:get_response_msg][:rn_objects_result][:rn_objects]
-    object.create_from_response(a)
+    object.class.create_from_response(a)
   rescue Savon::SOAPFault => ex
     raise RightNow::InvalidObjectError.new(ex.message)
   end
@@ -65,7 +59,7 @@ class RightNow::Client
 
     a = response_items[1][:get_response_msg][:rn_objects_result][:rn_objects]
 
-    object.create_from_response(a)
+    object.class.create_from_response(a)
   rescue Savon::SOAPFault => ex
     raise RightNow::InvalidObjectError.new(ex.message)
   end
@@ -74,7 +68,7 @@ class RightNow::Client
     r = connection.call(:query_objects, xml: soap_envelope { object.body(:find) } )
     return nil if r.body[:query_objects_response][:result][:paging][:returned_count].to_i == 0
     a = r.body[:query_objects_response][:result][:rn_objects_result][:rn_objects]
-    object.create_from_response(a)
+    object.class.create_from_response(a)
   end
 
   private
