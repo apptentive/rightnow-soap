@@ -22,9 +22,9 @@ class RightNow::Objects::Contact < RightNow::RNObject
   def create_from_response(contact_params)
     RightNow::Objects::Contact.new(
             id: contact_params[:id][:@id],
-    first_name: contact_params[:name][:first],
-     last_name: contact_params[:name][:last],
-         email: (email_from_response(contact_params[:emails][:email_list]) if contact_params[:emails]) # TODO what if there are two addresses?
+    first_name: (contact_params[:name][:first] if contact_params[:name]),
+     last_name: (contact_params[:name][:last] if contact_params[:name]),
+         email: (email_from_response(contact_params.fetch(:emails){{}}[:email_list]) if contact_params[:emails]) # TODO what if there are two addresses?
     )
   end
 

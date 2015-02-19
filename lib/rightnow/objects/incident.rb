@@ -44,8 +44,9 @@ class RightNow::Objects::Incident < RightNow::RNObject
 
   # this knows the response format, which may be a different responsibility
   def create_from_response(incident_params)
-    RightNow::Objects::Incident.new(id: incident_params[:id][:@id],
-      threads: build_threads(incident_params[:threads][:thread_list]),
+    RightNow::Objects::Incident.new(
+           id: incident_params[:id][:@id],
+      threads: (build_threads(incident_params[:threads][:thread_list]) if incident_params[:threads]),
       subject: incident_params[:subject]
     )
   end
