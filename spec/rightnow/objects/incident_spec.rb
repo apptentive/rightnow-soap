@@ -22,6 +22,21 @@ describe RightNow::Objects::Incident do
           expect { incident.body(:create) }.to raise_error(RightNow::InvalidObjectError)
         end
       end
+
+      describe 'status' do
+        context 'with a status' do
+          it 'should have a key set' do
+            incident.status_id = 1
+            expect(incident.body(:create)).to include('StatusWithType')
+          end
+        end
+
+        context 'without a status' do
+          it 'should not have a key set' do
+            expect(incident.body(:create)).to_not include('StatusWithType')
+          end
+        end
+      end
     end
 
     context 'for update' do
@@ -46,6 +61,21 @@ describe RightNow::Objects::Incident do
         context 'when sent by a customer' do
           it 'should tag the thread to the customer' do
             expect(incident.body(:update)).to include('<base:ID id="3"/>')
+          end
+        end
+      end
+
+      describe 'status' do
+        context 'with a status' do
+          it 'should have a key set' do
+            incident.status_id = 1
+            expect(incident.body(:update)).to include('StatusWithType')
+          end
+        end
+
+        context 'without a status' do
+          it 'should not have a key set' do
+            expect(incident.body(:update)).to_not include('StatusWithType')
           end
         end
       end

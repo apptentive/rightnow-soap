@@ -9,21 +9,26 @@ class RightNow::Objects::Incident < RightNow::RNObject
     end
   end
 
-  attr_accessor :primary_contact_id, :message, :id, :subject, :threads, :app_id, :from_agent
+  attr_accessor :primary_contact_id, :message, :id, :subject, :threads, :app_id, :from_agent, :status_id
 
   def initialize(params)
     @type = 'Incident'
 
-    # when building a response object (:id in both)
+    # update and building response
     @id                 = params[:id]
+
+    # create
+    @app_id             = params[:app_id]
     @subject            = params[:subject]
-    @threads            = params[:threads] || []
+    @primary_contact_id = params[:contact_id]
+
+    # create and update
+    @message            = params[:message]
+    @status_id          = params[:status_id]
     @from_agent         = !!params[:from_agent]
 
-    # when creating an incident
-    @message            = params[:message]
-    @app_id             = params[:app_id]
-    @primary_contact_id = params[:contact_id]
+    # when building a response object
+    @threads            = params[:threads] || []
   end
 
   def self.create_from_response(incident_params)
@@ -112,6 +117,13 @@ class RightNow::Objects::Incident < RightNow::RNObject
               xml[:base].ID(id: primary_contact_id)
             end
           end
+          if status_id
+            xml[:object].StatusWithType do
+              xml[:object].Status do
+                xml[:base].ID(id: status_id)
+              end
+            end
+          end
           xml[:object].Subject(subject)
           # NOTE: what if there is a nil or blank message sent to Oracle?
           xml[:object].Threads do
@@ -137,6 +149,16 @@ class RightNow::Objects::Incident < RightNow::RNObject
       xml.UpdateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
         xml.RNObjects('xsi:type' => "object:Incident", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
           xml[:base].ID(id: id, 'xsi:type' => 'ChainSourceID', 'variableName' => 'MyIncident')
+          if status_id
+            xml[:object].StatusWithType do
+              # 1 - Unresolved
+              # 2 - Resolved
+              # 3 - Waiting for Customer
+              xml[:object].Status do
+                xml[:base].ID(id: status_id)
+              end
+            end
+          end
           xml[:object].Threads do
             xml[:object].ThreadList(action: 'add') do
               xml[:object].EntryType do
