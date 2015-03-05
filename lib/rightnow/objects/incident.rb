@@ -9,7 +9,15 @@ class RightNow::Objects::Incident < RightNow::RNObject
     end
   end
 
-  attr_accessor :primary_contact_id, :message, :id, :subject, :threads, :app_id, :from_agent, :status_id
+  attr_accessor :primary_contact_id,
+                :message,
+                :id,
+                :subject,
+                :threads,
+                :app_id,
+                :from_agent,
+                :status_id,
+                :queue_id
 
   def initialize(params)
     @type = 'Incident'
@@ -25,6 +33,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
     # create and update
     @message            = params[:message]
     @status_id          = params[:status_id]
+    @queue_id           = params[:queue_id]
     @from_agent         = !!params[:from_agent]
 
     # when building a response object
@@ -117,6 +126,11 @@ class RightNow::Objects::Incident < RightNow::RNObject
               xml[:base].ID(id: primary_contact_id)
             end
           end
+          if queue_id
+            xml[:object].Queue do
+              xml[:base].ID(id: queue_id)
+            end
+          end
           if status_id
             xml[:object].StatusWithType do
               xml[:object].Status do
@@ -149,6 +163,11 @@ class RightNow::Objects::Incident < RightNow::RNObject
       xml.UpdateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
         xml.RNObjects('xsi:type' => "object:Incident", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
           xml[:base].ID(id: id, 'xsi:type' => 'ChainSourceID', 'variableName' => 'MyIncident')
+          if queue_id
+            xml[:object].Queue do
+              xml[:base].ID(id: queue_id)
+            end
+          end
           if status_id
             xml[:object].StatusWithType do
               # 1 - Unresolved

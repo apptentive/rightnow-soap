@@ -56,11 +56,11 @@ describe RightNow::Client do
       context 'with valid parameters' do
         it 'should return an Incident with full attributes' do
           VCR.use_cassette('create_incident', match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test', app_id: 'ab123c', subject: 'Apptentive Message', status_id: 1)
+            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test', app_id: 'ab123c', subject: 'Apptentive Message', status_id: 1, queue_id: 31)
             response = client.create(incident)
 
             expect(response).to be_a(RightNow::Objects::Incident)
-            expect(response.id).to eq '54947412'
+            expect(response.id).to eq '54947476'
             expect(response.subject).to eq 'Apptentive Message'
             expect(response.threads.length).to eq 1
           end
@@ -107,13 +107,13 @@ describe RightNow::Client do
       context 'with valid params' do
         it 'should return an Incident with full attributes' do
           VCR.use_cassette('update_incident', match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(id: '54947325', message: 'new thread entry', status_id: 1)
+            incident = RightNow::Objects::Incident.new(id: '54947325', message: 'new thread entry', status_id: 1, queue_id: 31)
             response = client.update(incident)
 
             expect(response).to be_a(RightNow::Objects::Incident)
             expect(response.id).to eq '54947325'
             expect(response.subject).to eq 'Apptentive Message'
-            expect(response.threads.length).to eq 19
+            expect(response.threads.length).to eq 21
           end
         end
       end
