@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 23 Feb 2015 00:34:26 GMT
+      - Thu, 05 Mar 2015 20:17:56 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=185383 t=1424651666689485
+      - D=135542 t=1425586676096036
       Rnt-Machine:
-      - '0.84'
+      - '0.85'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version: 
-  recorded_at: Mon, 23 Feb 2015 00:34:27 GMT
+  recorded_at: Thu, 05 Mar 2015 20:17:55 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -797,6 +797,9 @@ http_interactions:
                 <base:ID id="27404751"/>
               </object:Contact>
             </object:PrimaryContact>
+            <object:Queue>
+              <base:ID id="31"/>
+            </object:Queue>
             <object:StatusWithType>
               <object:Status>
                 <base:ID id="1"/>
@@ -838,7 +841,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '3088'
+      - '3152'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -851,15 +854,15 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 23 Feb 2015 00:34:27 GMT
+      - Thu, 05 Mar 2015 20:17:56 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=920770 t=1424651667518071
+      - D=573762 t=1425586676905926
       Rnt-Machine:
-      - '0.85'
+      - '0.82'
       Content-Length:
-      - '695'
+      - '706'
       Content-Type:
       - text/xml;charset=UTF-8
     body:
@@ -867,16 +870,16 @@ http_interactions:
       string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:BatchResponse
         xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:n2="urn:base.ws.rightnow.com/v1_2"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:objects.ws.rightnow.com/v1_2"><n0:BatchResponseItem><n0:CreateResponseMsg><n0:RNObjectsResult><n0:RNObjects
-        xsi:type="n1:Incident"><n2:ID id="54947412"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponseMsg></n0:BatchResponseItem><n0:BatchResponseItem><n0:GetResponseMsg><n0:RNObjectsResult><n0:RNObjects
-        xsi:type="n1:Incident"><n2:ID id="54947412"></n2:ID><n2:LookupName>150222-000001</n2:LookupName><n2:CreatedTime>2015-02-23T00:34:27.000Z</n2:CreatedTime><n2:UpdatedTime>2015-02-23T00:34:27.000Z</n2:UpdatedTime><n1:CreatedByAccount><n2:ID
-        id="61197"></n2:ID></n1:CreatedByAccount><n1:InitialResponseDueTime>2015-02-24T01:00:00.000Z</n1:InitialResponseDueTime><n1:Interface><n2:ID
+        xsi:type="n1:Incident"><n2:ID id="54947476"></n2:ID></n0:RNObjects></n0:RNObjectsResult></n0:CreateResponseMsg></n0:BatchResponseItem><n0:BatchResponseItem><n0:GetResponseMsg><n0:RNObjectsResult><n0:RNObjects
+        xsi:type="n1:Incident"><n2:ID id="54947476"></n2:ID><n2:LookupName>150305-000011</n2:LookupName><n2:CreatedTime>2015-03-05T20:17:57.000Z</n2:CreatedTime><n2:UpdatedTime>2015-03-05T20:17:57.000Z</n2:UpdatedTime><n1:CreatedByAccount><n2:ID
+        id="61197"></n2:ID></n1:CreatedByAccount><n1:InitialResponseDueTime>2015-03-06T20:17:00.000Z</n1:InitialResponseDueTime><n1:Interface><n2:ID
         id="2"></n2:ID></n1:Interface><n1:Language><n2:ID id="1"></n2:ID></n1:Language><n1:PrimaryContact><n1:Contact><n2:ID
-        id="27404751"></n2:ID></n1:Contact></n1:PrimaryContact><n1:ReferenceNumber>150222-000001</n1:ReferenceNumber><n1:SmartSenseCustomer>0</n1:SmartSenseCustomer><n1:SmartSenseStaff>0</n1:SmartSenseStaff><n1:Source><n2:ID
+        id="27404751"></n2:ID></n1:Contact></n1:PrimaryContact><n1:Queue><n2:ID id="31"></n2:ID></n1:Queue><n1:ReferenceNumber>150305-000011</n1:ReferenceNumber><n1:SmartSenseCustomer>0</n1:SmartSenseCustomer><n1:SmartSenseStaff>0</n1:SmartSenseStaff><n1:Source><n2:ID
         id="6006"></n2:ID><n2:Parents xsi:type="n2:NamedReadOnlyID"><n2:ID id="32007"></n2:ID></n2:Parents></n1:Source><n1:StatusWithType><n1:Status><n2:ID
         id="1"></n2:ID></n1:Status><n1:StatusType><n2:ID id="1"></n2:ID></n1:StatusType></n1:StatusWithType><n1:Subject>Apptentive
         Message</n1:Subject><n1:Threads><n1:ThreadList><n1:Contact><n2:ID id="27404751"></n2:ID></n1:Contact><n1:ContentType><n2:ID
-        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-02-23T00:34:27.000Z</n1:CreatedTime><n1:DisplayOrder>1</n1:DisplayOrder><n1:EntryType><n2:ID
-        id="3"></n2:ID></n1:EntryType><n1:ID id="61485536"></n1:ID><n1:Text>test</n1:Text></n1:ThreadList></n1:Threads></n0:RNObjects></n0:RNObjectsResult></n0:GetResponseMsg></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
+        id="1"></n2:ID></n1:ContentType><n1:CreatedTime>2015-03-05T20:17:57.000Z</n1:CreatedTime><n1:DisplayOrder>1</n1:DisplayOrder><n1:EntryType><n2:ID
+        id="3"></n2:ID></n1:EntryType><n1:ID id="61485619"></n1:ID><n1:Text>test</n1:Text></n1:ThreadList></n1:Threads></n0:RNObjects></n0:RNObjectsResult></n0:GetResponseMsg></n0:BatchResponseItem></n0:BatchResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Mon, 23 Feb 2015 00:34:28 GMT
+  recorded_at: Thu, 05 Mar 2015 20:17:56 GMT
 recorded_with: VCR 2.9.3

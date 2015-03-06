@@ -37,6 +37,21 @@ describe RightNow::Objects::Incident do
           end
         end
       end
+
+      describe 'queue' do
+        context 'with a queue' do
+          it 'should have a key set' do
+            incident.queue_id = 1
+            expect(incident.body(:create)).to include('Queue')
+          end
+        end
+
+        context 'without a queue' do
+          it 'should not have a key set' do
+            expect(incident.body(:create)).to_not include('Queue')
+          end
+        end
+      end
     end
 
     context 'for update' do
@@ -76,6 +91,21 @@ describe RightNow::Objects::Incident do
         context 'without a status' do
           it 'should not have a key set' do
             expect(incident.body(:update)).to_not include('StatusWithType')
+          end
+        end
+      end
+
+      describe 'queue' do
+        context 'with a queue' do
+          it 'should have a key set' do
+            incident.queue_id = 1
+            expect(incident.body(:update)).to include('Queue')
+          end
+        end
+
+        context 'without a queue' do
+          it 'should not have a key set' do
+            expect(incident.body(:update)).to_not include('Queue')
           end
         end
       end
