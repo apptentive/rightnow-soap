@@ -91,7 +91,7 @@ class RightNow::Objects::Contact < RightNow::RNObject
   def find_contact
     Nokogiri::XML::Builder.new do |xml|
       xml.QueryObjects('xmlns' => "urn:messages.ws.rightnow.com/v1_2") do
-        xml.Query("SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = '#{email}'")
+        xml.Query("SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = '#{email}' ORDER BY id ASC LIMIT 1")
         xml.ObjectTemplates('xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance', 'xsi:type' => 'object:Contact') do
           xml[:object].Emails
         end

@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 08:29:27 GMT
+      - Fri, 13 Mar 2015 00:21:37 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=310484 t=1423297767323032
+      - D=159492 t=1426206097029151
       Rnt-Machine:
-      - '0.82'
+      - '0.65'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 08:29:29 GMT
+  recorded_at: Fri, 13 Mar 2015 00:21:37 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -775,7 +775,7 @@ http_interactions:
           </env:Header>
           <env:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <QueryObjects xmlns="urn:messages.ws.rightnow.com/v1_2">
-          <Query>SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = 'mike+tester1@apptentive.com'</Query>
+          <Query>SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = 'mike+tester1@apptentive.com' ORDER BY id ASC LIMIT 1</Query>
           <ObjectTemplates xmlns:object="urn:objects.ws.rightnow.com/v1_2" xsi:type="object:Contact">
             <object:Emails/>
           </ObjectTemplates>
@@ -789,7 +789,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '1307'
+      - '1331'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -802,13 +802,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 07 Feb 2015 08:29:28 GMT
+      - Fri, 13 Mar 2015 00:21:37 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=178821 t=1423297768318270
+      - D=236133 t=1426206097645132
       Rnt-Machine:
-      - '0.71'
+      - '0.70'
       Content-Length:
       - '613'
       Content-Type:
@@ -823,5 +823,5 @@ http_interactions:
         id="1"></n2:ID></n1:AddressType><n1:Invalid>false</n1:Invalid></n1:EmailList></n1:Emails><n1:Name><n1:First>Mike</n1:First><n1:Last>Tester</n1:Last></n1:Name><n1:Source><n2:ID
         id="6006"></n2:ID><n2:Parents xsi:type="n2:NamedReadOnlyID"><n2:ID id="32007"></n2:ID></n2:Parents></n1:Source></n0:RNObjects></n0:RNObjectsResult><n0:Paging><n0:ReturnedCount>1</n0:ReturnedCount><n0:StartIndex>0</n0:StartIndex><n0:QueryHandle></n0:QueryHandle></n0:Paging></n0:Result></n0:QueryObjectsResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Sat, 07 Feb 2015 08:29:30 GMT
+  recorded_at: Fri, 13 Mar 2015 00:21:38 GMT
 recorded_with: VCR 2.9.3
