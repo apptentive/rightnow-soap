@@ -179,6 +179,21 @@ describe RightNow::Client do
           end
         end
       end
+
+      context 'when multiple contact records exist with the same email' do
+        it 'should only return 1 record' do
+          VCR.use_cassette('find_contact_with_multiple', match_requests_on: [:method, :uri, :body]) do
+            contact = RightNow::Objects::Contact.new(email: 'joel+queue2@apptentive.com')
+            response = client.find(contact)
+
+            expect(response).to be_a(RightNow::Objects::Contact)
+            expect(response.email).to eq 'joel+queue2@apptentive.com'
+            expect(response.id).to eq '27404830'
+            expect(response.first_name).to eq 'App'
+            expect(response.last_name).to eq 'User'
+          end
+        end
+      end
     end
   end
 end

@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 13 Mar 2015 00:21:56 GMT
+      - Fri, 13 Mar 2015 00:19:28 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=355485 t=1426206116525350
+      - D=292536 t=1426205968612394
       Rnt-Machine:
-      - '0.66'
+      - '0.68'
       Transfer-Encoding:
       - chunked
       Content-Type:
@@ -754,7 +754,7 @@ http_interactions:
         location=\"https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap\"/>\n
         \       </wsdl:port>\n    </wsdl:service>\n\n</wsdl:definitions>\n"
     http_version: 
-  recorded_at: Fri, 13 Mar 2015 00:21:57 GMT
+  recorded_at: Fri, 13 Mar 2015 00:19:29 GMT
 - request:
     method: post
     uri: https://apptentive-test.custhelp.com/cgi-bin/apptentive-test.cfg/services/soap
@@ -775,7 +775,7 @@ http_interactions:
           </env:Header>
           <env:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <QueryObjects xmlns="urn:messages.ws.rightnow.com/v1_2">
-          <Query>SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = 'testeroni@apptentive.com' ORDER BY id ASC LIMIT 1</Query>
+          <Query>SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = 'joel+queue2@apptentive.com' ORDER BY id ASC LIMIT 1</Query>
           <ObjectTemplates xmlns:object="urn:objects.ws.rightnow.com/v1_2" xsi:type="object:Contact">
             <object:Emails/>
           </ObjectTemplates>
@@ -789,7 +789,7 @@ http_interactions:
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '1328'
+      - '1330'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -802,21 +802,25 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 13 Mar 2015 00:21:57 GMT
+      - Fri, 13 Mar 2015 00:19:29 GMT
       Server:
       - Apache
       Rnt-Time:
-      - D=962082 t=1426206117385566
+      - D=177364 t=1426205969532684
       Rnt-Machine:
-      - '0.71'
+      - '0.98'
       Content-Length:
-      - '263'
+      - '581'
       Content-Type:
       - text/xml;charset=UTF-8
     body:
       encoding: UTF-8
       string: <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header></soapenv:Header><soapenv:Body><n0:QueryObjectsResponse
-        xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><n0:Result><n0:RNObjectsResult></n0:RNObjectsResult><n0:Paging><n0:ReturnedCount>0</n0:ReturnedCount><n0:StartIndex>0</n0:StartIndex><n0:QueryHandle></n0:QueryHandle></n0:Paging></n0:Result></n0:QueryObjectsResponse></soapenv:Body></soapenv:Envelope>
+        xmlns:n0="urn:messages.ws.rightnow.com/v1_2" xmlns:n2="urn:base.ws.rightnow.com/v1_2"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n1="urn:objects.ws.rightnow.com/v1_2"><n0:Result><n0:RNObjectsResult><n0:RNObjects
+        xsi:type="n1:Contact"><n2:ID id="27404830"></n2:ID><n2:LookupName>App User</n2:LookupName><n2:CreatedTime>2015-03-10T01:54:01.000Z</n2:CreatedTime><n2:UpdatedTime>2015-03-10T01:54:01.000Z</n2:UpdatedTime><n1:CRMModules><n1:Marketing>true</n1:Marketing><n1:Sales>true</n1:Sales><n1:Service>true</n1:Service></n1:CRMModules><n1:Disabled>false</n1:Disabled><n1:Emails><n1:EmailList><n1:Address>joel+queue2@apptentive.com</n1:Address><n1:AddressType><n2:ID
+        id="0"></n2:ID></n1:AddressType><n1:Invalid>false</n1:Invalid></n1:EmailList></n1:Emails><n1:Name><n1:First>App</n1:First><n1:Last>User</n1:Last></n1:Name><n1:Source><n2:ID
+        id="6006"></n2:ID><n2:Parents xsi:type="n2:NamedReadOnlyID"><n2:ID id="32007"></n2:ID></n2:Parents></n1:Source></n0:RNObjects></n0:RNObjectsResult><n0:Paging><n0:ReturnedCount>1</n0:ReturnedCount><n0:StartIndex>0</n0:StartIndex><n0:QueryHandle></n0:QueryHandle></n0:Paging></n0:Result></n0:QueryObjectsResponse></soapenv:Body></soapenv:Envelope>
     http_version: 
-  recorded_at: Fri, 13 Mar 2015 00:21:58 GMT
+  recorded_at: Fri, 13 Mar 2015 00:19:29 GMT
 recorded_with: VCR 2.9.3
