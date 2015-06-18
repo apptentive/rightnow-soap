@@ -83,7 +83,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
   # building XML for this object feels like a different responsibility
   # where would it go?
   def incident_modification_wrapper
-    Nokogiri::XML::Builder.new do |xml|
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml[:message].Batch('xmlns:message' => 'urn:messages.ws.rightnow.com/v1_2') do
         xml[:message].BatchRequestItem do
           xml << yield
@@ -104,7 +104,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
   end
 
   def create_incident
-    Nokogiri::XML::Builder.new do |xml|
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml.CreateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
         xml.RNObjects('xsi:type' => 'object:Incident', 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
           xml[:base].ID('xmlns:base' => 'urn:base.ws.rightnow.com/v1_2', 'xsi:type' => 'ChainSourceID', 'id' => '0', 'variableName' => 'MyIncident')
@@ -159,7 +159,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
   end
 
   def update_incident
-    Nokogiri::XML::Builder.new do |xml|
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml.UpdateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
         xml.RNObjects('xsi:type' => "object:Incident", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
           xml[:base].ID(id: id, 'xsi:type' => 'ChainSourceID', 'variableName' => 'MyIncident')
@@ -208,7 +208,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
   end
 
   def find_incident
-    Nokogiri::XML::Builder.new do |xml|
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml.QueryObjects('xmlns' => "urn:messages.ws.rightnow.com/v1_2") do
         xml.Query("SELECT Incident FROM Incident i WHERE i.ID = '#{id}'")
         xml.ObjectTemplates('xmlns:object' => "urn:objects.ws.rightnow.com/v1_2", 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xsi:type' => "object:Incident") do

@@ -29,6 +29,13 @@ describe RightNow::Objects::Contact do
       it 'should contain email' do
         expect(contact.body(:create)).to include 'joe.tester@apptentive.com'
       end
+
+      describe 'strings' do
+        it 'encodes multibyte characters correctly' do
+          contact.first_name = '日本語'
+          expect(contact.body(:create)).to include('日本語')
+        end
+      end
     end
 
     context 'for find' do
