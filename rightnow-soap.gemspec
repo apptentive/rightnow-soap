@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.add_runtime_dependency 'nokogiri', '~> 1.6'
-  s.add_runtime_dependency 'savon', '~> 2.8'
+  s.add_runtime_dependency 'savon', '~> 2.11'
 
   s.add_development_dependency 'yard', '~> 0.8'
   s.add_development_dependency 'pry', '~> 0.10'
