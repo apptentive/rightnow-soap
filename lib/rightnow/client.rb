@@ -75,7 +75,7 @@ class RightNow::Client
   attr_writer :error_message
 
   def soap_envelope
-    Nokogiri::XML::Builder.new do |xml|
+    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
       xml[:env].Envelope('xmlns:env' => 'http://schemas.xmlsoap.org/soap/envelope/') do
         xml[:env].Header do
           xml[:message].ClientInfoHeader('xmlns:message' => 'urn:messages.ws.rightnow.com/v1_2', 'xmlns' => 'urn:messages.ws.rightnow.com/v1_2', 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance', 'xmlns:xsd' => 'http://www.w3.org/2001/XMLSchema') do

@@ -38,6 +38,13 @@ describe RightNow::Objects::Incident do
         end
       end
 
+      describe 'message' do
+        it 'encodes multibyte characters correctly' do
+          incident.message = '日本語'
+          expect(incident.body(:create)).to include('日本語')
+        end
+      end
+
       describe 'queue' do
         context 'with a queue' do
           it 'should have a key set' do
@@ -92,6 +99,13 @@ describe RightNow::Objects::Incident do
           it 'should not have a key set' do
             expect(incident.body(:update)).to_not include('StatusWithType')
           end
+        end
+      end
+
+      describe 'message' do
+        it 'encodes multibyte characters correctly' do
+          incident.message = '日本語'
+          expect(incident.body(:update)).to include('日本語')
         end
       end
 
