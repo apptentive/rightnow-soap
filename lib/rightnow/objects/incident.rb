@@ -61,7 +61,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
   end
 
   def most_recent_thread
-    threads.max_by(&:display_order)
+    threads.max_by { |thread| thread.display_order.to_i }
   end
 
   private

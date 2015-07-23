@@ -155,8 +155,8 @@ describe RightNow::Objects::Incident do
 
   describe '#most_recent_thread' do
     let(:incident) { RightNow::Objects::Incident.new(contact_id: 1, message: 'new incident', app_id: 'ab123c') }
-    let(:thread1) { RightNow::Objects::Incident::Thread.new(text: 'first', display_order: 1) }
-    let(:thread2) { RightNow::Objects::Incident::Thread.new(text: 'last', display_order: 2) }
+    let(:thread1) { RightNow::Objects::Incident::Thread.new(text: 'first', display_order: "2") }
+    let(:thread2) { RightNow::Objects::Incident::Thread.new(text: 'last', display_order: "11") }
 
     context 'with threads' do
       it 'should return the highest in the display order' do
