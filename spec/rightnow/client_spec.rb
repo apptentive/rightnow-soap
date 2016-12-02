@@ -56,7 +56,7 @@ describe RightNow::Client do
       context 'with valid parameters' do
         it 'should return an Incident with full attributes' do
           VCR.use_cassette('create_incident', match_requests_on: [:method, :uri, :body]) do
-            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test', app_id: 'ab123c', subject: 'Apptentive Message', status_id: 1, queue_id: 31)
+            incident = RightNow::Objects::Incident.new(contact_id: '27404751', message: 'test', app_id: 'ab123c', subject: 'Apptentive Message', status_id: 1, queue_id: 31, channel_id: 9)
             response = client.create(incident)
 
             expect(response).to be_a(RightNow::Objects::Incident)

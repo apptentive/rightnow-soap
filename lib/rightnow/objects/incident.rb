@@ -17,7 +17,8 @@ class RightNow::Objects::Incident < RightNow::RNObject
                 :app_id,
                 :from_agent,
                 :status_id,
-                :queue_id
+                :queue_id,
+                :channel_id
 
   def initialize(params)
     @type = 'Incident'
@@ -34,6 +35,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
     @message            = params[:message]
     @status_id          = params[:status_id]
     @queue_id           = params[:queue_id]
+    @channel_id         = params[:channel_id]
     @from_agent         = !!params[:from_agent]
 
     # when building a response object
@@ -138,6 +140,12 @@ class RightNow::Objects::Incident < RightNow::RNObject
               end
             end
           end
+          if channel_id
+            # 9 - Email
+            xml[:object].Channel do
+              xml[:base].ID(id: channel_id)
+            end
+          end
           xml[:object].Subject(subject)
           # NOTE: what if there is a nil or blank message sent to Oracle?
           xml[:object].Threads do
@@ -176,6 +184,12 @@ class RightNow::Objects::Incident < RightNow::RNObject
               xml[:object].Status do
                 xml[:base].ID(id: status_id)
               end
+            end
+          end
+          if channel_id
+            # 9 - Email
+            xml[:object].Channel do
+              xml[:base].ID(id: channel_id)
             end
           end
           xml[:object].Threads do
