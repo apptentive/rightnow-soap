@@ -138,21 +138,6 @@ describe RightNow::Objects::Incident do
           end
         end
       end
-
-      describe 'channel' do
-        context 'with a channel' do
-          it 'should have a key set' do
-            incident.channel_id = 1
-            expect(incident.body(:update)).to include('Channel')
-          end
-        end
-
-        context 'without a channel' do
-          it 'should not have a key set' do
-            expect(incident.body(:update)).to_not include('Channel')
-          end
-        end
-      end
     end
 
     context 'for find' do

@@ -186,12 +186,6 @@ class RightNow::Objects::Incident < RightNow::RNObject
               end
             end
           end
-          if channel_id
-            # 9 - Email
-            xml[:object].Channel do
-              xml[:base].ID(id: channel_id)
-            end
-          end
           xml[:object].Threads do
             xml[:object].ThreadList(action: 'add') do
               xml[:object].EntryType do
