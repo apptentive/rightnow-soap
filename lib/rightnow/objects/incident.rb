@@ -154,6 +154,12 @@ class RightNow::Objects::Incident < RightNow::RNObject
                 xml[:base].ID(id: 3)
               end
               xml[:object].Text(message)
+              if channel_id
+                # 9 - Email
+                xml[:object].Channel do
+                  xml[:base].ID(id: channel_id)
+                end
+              end
             end
           end
         end
@@ -203,6 +209,12 @@ class RightNow::Objects::Incident < RightNow::RNObject
                 xml[:base].ID(id: entry_type)
               end
               xml[:object].Text(message)
+              if channel_id
+                # 9 - Email
+                xml[:object].Channel do
+                  xml[:base].ID(id: channel_id)
+                end
+              end
             end
           end
         end
