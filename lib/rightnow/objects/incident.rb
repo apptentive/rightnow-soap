@@ -110,6 +110,12 @@ class RightNow::Objects::Incident < RightNow::RNObject
       xml.CreateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
         xml.RNObjects('xsi:type' => 'object:Incident', 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
           xml[:base].ID('xmlns:base' => 'urn:base.ws.rightnow.com/v1_2', 'xsi:type' => 'ChainSourceID', 'id' => '0', 'variableName' => 'MyIncident')
+          if channel_id
+            # 9 - Email
+            xml[:object].Channel do
+              xml[:base].ID(id: channel_id)
+            end
+          end
           xml[:object].CustomFields do
             xml.GenericFields('name' => 'c', 'dataType' => 'OBJECT', 'xmlns' => 'urn:generic.ws.rightnow.com/v1_2') do
               xml.DataValue do
@@ -140,26 +146,20 @@ class RightNow::Objects::Incident < RightNow::RNObject
               end
             end
           end
-          if channel_id
-            # 9 - Email
-            xml[:object].Channel do
-              xml[:base].ID(id: channel_id)
-            end
-          end
           xml[:object].Subject(subject)
           # NOTE: what if there is a nil or blank message sent to Oracle?
           xml[:object].Threads do
             xml[:object].ThreadList(action: 'add') do
-              xml[:object].EntryType do
-                xml[:base].ID(id: 3)
-              end
-              xml[:object].Text(message)
               if channel_id
                 # 9 - Email
                 xml[:object].Channel do
                   xml[:base].ID(id: channel_id)
                 end
               end
+              xml[:object].EntryType do
+                xml[:base].ID(id: 3)
+              end
+              xml[:object].Text(message)
             end
           end
         end
@@ -194,6 +194,12 @@ class RightNow::Objects::Incident < RightNow::RNObject
           end
           xml[:object].Threads do
             xml[:object].ThreadList(action: 'add') do
+              if channel_id
+                # 9 - Email
+                xml[:object].Channel do
+                  xml[:base].ID(id: channel_id)
+                end
+              end
               xml[:object].EntryType do
                 # if an agent is responding from Apptentive dashboard, it needs to be 2 (Staff Account)
                   # 1 - Note
@@ -209,12 +215,6 @@ class RightNow::Objects::Incident < RightNow::RNObject
                 xml[:base].ID(id: entry_type)
               end
               xml[:object].Text(message)
-              if channel_id
-                # 9 - Email
-                xml[:object].Channel do
-                  xml[:base].ID(id: channel_id)
-                end
-              end
             end
           end
         end
