@@ -1,0 +1,215 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'packer/**/*'
+
+Layout/ArgumentAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
+
+Layout/DotPosition:
+  EnforcedStyle: leading
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  Enabled: false
+
+Layout/FirstArrayElementIndentation:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Lint/AssignmentInCondition:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/ReturnInVoidContext:
+  Enabled: false
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+# TODO: activate in rubocop 0.85 with skip list
+Naming/ClassAndModuleCamelCase:
+  Enabled: false
+#  AllowedNames: [module_parent, V2_V4, V4_V7, V2_V7]
+
+Naming/FileName:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+Naming/VariableName:
+  EnforcedStyle: snake_case
+
+Performance/CaseWhenSplat:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/ApplicationController:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Enabled: true
+  Whitelist: find_by_invitation_token, find_by_oauth_identities
+  Exclude:
+    - 'spec/**/*.rb'
+
+# This switch is not idempotent and does not return nil like the style guide suggests. Maybe a mongoid special case
+Rails/FindBy:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/HttpPositionalArguments:
+  Enabled: false
+
+# Prefer numeric so that intentions are clear for non-Rails devs
+Rails/HttpStatus:
+  EnforcedStyle: numeric
+
+# :read_attribute and :[] are aliased in Mongoid
+Rails/ReadWriteAttribute:
+  Enabled: false
+
+# We haven't made a style choice on this and we have existing #try/try!
+# monkeypatches to consider before using the new Ruby feature.
+Rails/SafeNavigation:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  # Temporary
+  Enabled: true
+  Exclude:
+    - 'spec/**/*.rb'
+
+Rails/UnknownEnv:
+  Environments: production, test, development, staging
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/Encoding:
+  Enabled: false
+
+Style/FloatDivision:
+  Enabled: false
+
+Style/FormatString:
+  EnforcedStyle: format
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GlobalVars:
+  AllowedVariables: [$statsd, $rollout, $rails_rake_task]
+
+Style/GuardClause:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MissingRespondToMissing:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - 'spec/fixtures/webmock/aws.rb'
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: true
+  EnforcedStyle: implicit
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  MinSize: 3
+
+Style/WordArray:
+  MinSize: 3

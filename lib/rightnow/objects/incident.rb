@@ -10,21 +10,21 @@ class RightNow::Objects::Incident < RightNow::RNObject
   end
 
   attr_accessor :primary_contact_id,
-                :message,
-                :id,
-                :subject,
-                :threads,
-                :app_id,
-                :from_agent,
-                :status_id,
-                :queue_id,
-                :channel_id
+    :message,
+    :id,
+    :subject,
+    :threads,
+    :app_id,
+    :from_agent,
+    :status_id,
+    :queue_id,
+    :channel_id
 
   def initialize(params)
-    @type = 'Incident'
+    @type = "Incident"
 
     # update and building response
-    @id                 = params[:id]
+    @id                 = params[:id] # rubocop:disable Layout/SpaceAroundOperators
 
     # create
     @app_id             = params[:app_id]
@@ -39,12 +39,12 @@ class RightNow::Objects::Incident < RightNow::RNObject
     @from_agent         = !!params[:from_agent]
 
     # when building a response object
-    @threads            = params[:threads] || []
+    @threads            = params[:threads] || [] # rubocop:disable Layout/SpaceAroundOperators
   end
 
   def self.create_from_response(incident_params)
     RightNow::Objects::Incident.new(
-           id: incident_params[:id][:@id],
+      id: incident_params[:id][:@id],
       threads: (build_threads(incident_params[:threads][:thread_list]) if incident_params[:threads]),
       subject: incident_params[:subject]
     )
@@ -69,10 +69,10 @@ class RightNow::Objects::Incident < RightNow::RNObject
   private
 
   def validate_incident
-    raise RightNow::InvalidObjectError.new('Incidents must be created with an Apptentive app_id') unless has_app_id?
+    raise RightNow::InvalidObjectError, "Incidents must be created with an Apptentive app_id" unless app_id?
   end
 
-  def has_app_id?
+  def app_id?
     app_id && !app_id.strip.empty?
   end
 
@@ -82,22 +82,24 @@ class RightNow::Objects::Incident < RightNow::RNObject
     end
   end
 
+  private_class_method :build_threads
+
   # building XML for this object feels like a different responsibility
   # where would it go?
   def incident_modification_wrapper
-    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml[:message].Batch('xmlns:message' => 'urn:messages.ws.rightnow.com/v1_2') do
+    Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
+      xml[:message].Batch("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
         xml[:message].BatchRequestItem do
           xml << yield
         end
         xml[:message].BatchRequestItem do
           xml[:message].GetMsg do
-            xml[:message].RNObjects('xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance', 'xsi:type' => 'object:Incident') do
-              xml.ID('xmlns' => 'urn:base.ws.rightnow.com/v1_2', 'xsi:type' => 'ChainDestinationID', 'id' => '0', 'variableName' => 'MyIncident')
+            xml[:message].RNObjects("xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Incident") do
+              xml.ID("xmlns" => "urn:base.ws.rightnow.com/v1_2", "xsi:type" => "ChainDestinationID", "id" => "0", "variableName" => "MyIncident")
               xml[:object].Threads
             end
             xml[:message].ProcessingOptions do
-              xml[:message].FetchAllNames('false')
+              xml[:message].FetchAllNames("false")
             end
           end
         end
@@ -106,10 +108,10 @@ class RightNow::Objects::Incident < RightNow::RNObject
   end
 
   def create_incident
-    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml.CreateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
-        xml.RNObjects('xsi:type' => 'object:Incident', 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
-          xml[:base].ID('xmlns:base' => 'urn:base.ws.rightnow.com/v1_2', 'xsi:type' => 'ChainSourceID', 'id' => '0', 'variableName' => 'MyIncident')
+    Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
+      xml[:message].CreateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
+        xml[:message].RNObjects("xsi:type" => "object:Incident", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:base" => "urn:base.ws.rightnow.com/v1_2") do
+          xml[:base].ID("xmlns:base" => "urn:base.ws.rightnow.com/v1_2", "xsi:type" => "ChainSourceID", "id" => "0", "variableName" => "MyIncident")
           if channel_id
             # 9 - Email
             xml[:object].Channel do
@@ -117,10 +119,10 @@ class RightNow::Objects::Incident < RightNow::RNObject
             end
           end
           xml[:object].CustomFields do
-            xml.GenericFields('name' => 'c', 'dataType' => 'OBJECT', 'xmlns' => 'urn:generic.ws.rightnow.com/v1_2') do
+            xml.GenericFields("name" => "c", "dataType" => "OBJECT", "xmlns" => "urn:generic.ws.rightnow.com/v1_2") do
               xml.DataValue do
                 xml.ObjectValue do
-                  xml.GenericFields('name' => 'apptentive_app_id', 'dataType' => 'STRING') do
+                  xml.GenericFields("name" => "apptentive_app_id", "dataType" => "STRING") do
                     xml.DataValue do
                       xml.StringValue(app_id)
                     end
@@ -149,7 +151,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
           xml[:object].Subject(subject)
           # NOTE: what if there is a nil or blank message sent to Oracle?
           xml[:object].Threads do
-            xml[:object].ThreadList(action: 'add') do
+            xml[:object].ThreadList(action: "add") do
               if channel_id
                 # 9 - Email
                 xml[:object].Channel do
@@ -164,19 +166,19 @@ class RightNow::Objects::Incident < RightNow::RNObject
           end
         end
 
-        xml.ProcessingOptions do
-          xml.SuppressExternalEvents('false')
-          xml.SuppressRules('false')
+        xml[:message].ProcessingOptions do
+          xml[:message].SuppressExternalEvents("false")
+          xml[:message].SuppressRules("false")
         end
       end
     end.doc.root.to_xml
   end
 
   def update_incident
-    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml.UpdateMsg('xmlns' => 'urn:messages.ws.rightnow.com/v1_2') do
-        xml.RNObjects('xsi:type' => "object:Incident", 'xmlns:object' => 'urn:objects.ws.rightnow.com/v1_2', 'xmlns:base' => 'urn:base.ws.rightnow.com/v1_2') do
-          xml[:base].ID(id: id, 'xsi:type' => 'ChainSourceID', 'variableName' => 'MyIncident')
+    Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
+      xml[:message].UpdateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
+        xml[:message].RNObjects("xsi:type" => "object:Incident", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:base" => "urn:base.ws.rightnow.com/v1_2") do
+          xml[:base].ID(id: id, "xsi:type" => "ChainSourceID", "variableName" => "MyIncident")
           if queue_id
             xml[:object].Queue do
               xml[:base].ID(id: queue_id)
@@ -193,7 +195,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
             end
           end
           xml[:object].Threads do
-            xml[:object].ThreadList(action: 'add') do
+            xml[:object].ThreadList(action: "add") do
               if channel_id
                 # 9 - Email
                 xml[:object].Channel do
@@ -202,16 +204,16 @@ class RightNow::Objects::Incident < RightNow::RNObject
               end
               xml[:object].EntryType do
                 # if an agent is responding from Apptentive dashboard, it needs to be 2 (Staff Account)
-                  # 1 - Note
-                  # 2 - Staff Account
-                  # 3 - Customer
-                  # 4 - Customer Proxy
-                  # 5 - Chat
-                  # 6 - Rule Response
-                  # 7 - Rule Response Template
-                  # 8 - Voice Integration
+                # 1 - Note
+                # 2 - Staff Account
+                # 3 - Customer
+                # 4 - Customer Proxy
+                # 5 - Chat
+                # 6 - Rule Response
+                # 7 - Rule Response Template
+                # 8 - Voice Integration
 
-                  # TODO: flip this based on who is sending the notification
+                # TODO: flip this based on who is sending the notification
                 xml[:base].ID(id: entry_type)
               end
               xml[:object].Text(message)
@@ -219,22 +221,22 @@ class RightNow::Objects::Incident < RightNow::RNObject
           end
         end
 
-        xml.ProcessingOptions do
-          xml.SuppressExternalEvents('false')
-          xml.SuppressRules('false')
+        xml[:message].ProcessingOptions do
+          xml[:message].SuppressExternalEvents("false")
+          xml[:message].SuppressRules("false")
         end
       end
     end.doc.root.to_xml
   end
 
   def find_incident
-    Nokogiri::XML::Builder.new(encoding: 'UTF-8') do |xml|
-      xml.QueryObjects('xmlns' => "urn:messages.ws.rightnow.com/v1_2") do
+    Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
+      xml.QueryObjects("xmlns" => "urn:messages.ws.rightnow.com/v1_2") do
         xml.Query("SELECT Incident FROM Incident i WHERE i.ID = '#{id}'")
-        xml.ObjectTemplates('xmlns:object' => "urn:objects.ws.rightnow.com/v1_2", 'xmlns:xsi' => "http://www.w3.org/2001/XMLSchema-instance", 'xsi:type' => "object:Incident") do
+        xml.ObjectTemplates("xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Incident") do
           xml[:object].Threads
         end
-        xml.PageSize('100')
+        xml.PageSize("100")
       end
     end.doc.root.to_xml
   end

@@ -1,10 +1,10 @@
-require 'bundler/setup'
+require "bundler/setup"
 Bundler.setup
 
-require 'rightnow'
-require 'webmock/rspec'
-require 'vcr'
-require 'pry'
+require "rightnow"
+require "webmock/rspec"
+require "vcr"
+require "pry"
 
 RSpec.configure do |config|
   # some (optional) config here

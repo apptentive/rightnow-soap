@@ -779,6 +779,9 @@ http_interactions:
             <message:CreateMsg>
           <message:RNObjects xmlns:object="urn:objects.ws.rightnow.com/v1_2" xmlns:base="urn:base.ws.rightnow.com/v1_2" xsi:type="object:Incident">
             <base:ID id="0" variableName="MyIncident" xsi:type="ChainSourceID"/>
+            <object:Channel>
+              <base:ID id="9"/>
+            </object:Channel>
             <object:CustomFields>
               <GenericFields xmlns="urn:generic.ws.rightnow.com/v1_2" name="c" dataType="OBJECT">
                 <DataValue>
@@ -808,6 +811,9 @@ http_interactions:
             <object:Subject>Apptentive Message</object:Subject>
             <object:Threads>
               <object:ThreadList action="add">
+                <object:Channel>
+                  <base:ID id="9"/>
+                </object:Channel>
                 <object:EntryType>
                   <base:ID id="3"/>
                 </object:EntryType>
