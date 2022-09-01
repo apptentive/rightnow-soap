@@ -53,3 +53,5 @@ sample_send.xml
 convert_yml.rb
 TODO
 Gemfile.lock
+
+.DS_Store
