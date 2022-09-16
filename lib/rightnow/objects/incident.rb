@@ -88,14 +88,14 @@ class RightNow::Objects::Incident < RightNow::RNObject
   # where would it go?
   def incident_modification_wrapper
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml[:message].Batch("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
+      xml[:message].Batch("xmlns:message" => "urn:messages.ws.rightnow.com/v1_4") do
         xml[:message].BatchRequestItem do
           xml << yield
         end
         xml[:message].BatchRequestItem do
           xml[:message].GetMsg do
-            xml[:message].RNObjects("xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Incident") do
-              xml.ID("xmlns" => "urn:base.ws.rightnow.com/v1_2", "xsi:type" => "ChainDestinationID", "id" => "0", "variableName" => "MyIncident")
+            xml[:message].RNObjects("xmlns:object" => "urn:objects.ws.rightnow.com/v1_4", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Incident") do
+              xml.ID("xmlns" => "urn:base.ws.rightnow.com/v1_4", "xsi:type" => "ChainDestinationID", "id" => "0", "variableName" => "MyIncident")
               xml[:object].Threads
             end
             xml[:message].ProcessingOptions do
@@ -109,9 +109,9 @@ class RightNow::Objects::Incident < RightNow::RNObject
 
   def create_incident
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml[:message].CreateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
-        xml[:message].RNObjects("xsi:type" => "object:Incident", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:base" => "urn:base.ws.rightnow.com/v1_2") do
-          xml[:base].ID("xmlns:base" => "urn:base.ws.rightnow.com/v1_2", "xsi:type" => "ChainSourceID", "id" => "0", "variableName" => "MyIncident")
+      xml[:message].CreateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_4") do
+        xml[:message].RNObjects("xsi:type" => "object:Incident", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_4", "xmlns:base" => "urn:base.ws.rightnow.com/v1_4") do
+          xml[:base].ID("xmlns:base" => "urn:base.ws.rightnow.com/v1_4", "xsi:type" => "ChainSourceID", "id" => "0", "variableName" => "MyIncident")
           if channel_id
             # 9 - Email
             xml[:object].Channel do
@@ -119,7 +119,7 @@ class RightNow::Objects::Incident < RightNow::RNObject
             end
           end
           xml[:object].CustomFields do
-            xml.GenericFields("name" => "c", "dataType" => "OBJECT", "xmlns" => "urn:generic.ws.rightnow.com/v1_2") do
+            xml.GenericFields("name" => "c", "dataType" => "OBJECT", "xmlns" => "urn:generic.ws.rightnow.com/v1_4") do
               xml.DataValue do
                 xml.ObjectValue do
                   xml.GenericFields("name" => "apptentive_app_id", "dataType" => "STRING") do
@@ -176,8 +176,8 @@ class RightNow::Objects::Incident < RightNow::RNObject
 
   def update_incident
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml[:message].UpdateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
-        xml[:message].RNObjects("xsi:type" => "object:Incident", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:base" => "urn:base.ws.rightnow.com/v1_2") do
+      xml[:message].UpdateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_4") do
+        xml[:message].RNObjects("xsi:type" => "object:Incident", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_4", "xmlns:base" => "urn:base.ws.rightnow.com/v1_4") do
           xml[:base].ID(id: id, "xsi:type" => "ChainSourceID", "variableName" => "MyIncident")
           if queue_id
             xml[:object].Queue do
@@ -231,9 +231,9 @@ class RightNow::Objects::Incident < RightNow::RNObject
 
   def find_incident
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml.QueryObjects("xmlns" => "urn:messages.ws.rightnow.com/v1_2") do
-        xml.Query("SELECT Incident FROM Incident i WHERE i.ID = '#{id}'")
-        xml.ObjectTemplates("xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Incident") do
+      xml.QueryObjects("xmlns" => "urn:messages.ws.rightnow.com/v1_4") do
+        xml.Query("SELECT Incident FROM Incident i WHERE i.ID = #{id}")
+        xml.ObjectTemplates("xmlns:object" => "urn:objects.ws.rightnow.com/v1_4", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Incident") do
           xml[:object].Threads
         end
         xml.PageSize("100")
