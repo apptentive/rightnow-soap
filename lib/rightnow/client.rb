@@ -80,7 +80,7 @@ class RightNow::Client
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
       xml[:env].Envelope("xmlns:env" => "http://schemas.xmlsoap.org/soap/envelope/") do
         xml[:env].Header do
-          xml[:message].ClientInfoHeader("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2", "xmlns" => "urn:messages.ws.rightnow.com/v1_2", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xmlns:xsd" => "http://www.w3.org/2001/XMLSchema") do
+          xml[:message].ClientInfoHeader("xmlns:message" => "urn:messages.ws.rightnow.com/v1_4", "xmlns" => "urn:messages.ws.rightnow.com/v1_4", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xmlns:xsd" => "http://www.w3.org/2001/XMLSchema") do
             xml.AppID("Apptentive Integration")
           end
           xml[:wsse].Security("xmlns:wsse" => "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd", "env:mustUnderstand" => "1") do

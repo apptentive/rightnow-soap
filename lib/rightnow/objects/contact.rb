@@ -42,14 +42,14 @@ class RightNow::Objects::Contact < RightNow::RNObject
 
   def create_contact
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml[:message].Batch("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
+      xml[:message].Batch("xmlns:message" => "urn:messages.ws.rightnow.com/v1_4") do
         xml[:message].BatchRequestItem do
           xml << contact_body
         end
         xml[:message].BatchRequestItem do
           xml[:message].GetMsg do
-            xml[:message].RNObjects("xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Contact") do
-              xml.ID("xmlns" => "urn:base.ws.rightnow.com/v1_2", "xsi:type" => "ChainDestinationID", "id" => "0", "variableName" => "MyNewContact")
+            xml[:message].RNObjects("xmlns:object" => "urn:objects.ws.rightnow.com/v1_4", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Contact") do
+              xml.ID("xmlns" => "urn:base.ws.rightnow.com/v1_4", "xsi:type" => "ChainDestinationID", "id" => "0", "variableName" => "MyNewContact")
               xml[:object].Emails
             end
             xml[:message].ProcessingOptions do
@@ -63,8 +63,8 @@ class RightNow::Objects::Contact < RightNow::RNObject
 
   def contact_body
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml[:message].CreateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_2") do
-        xml[:message].RNObjects("xsi:type" => "object:Contact", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:base" => "urn:base.ws.rightnow.com/v1_2") do
+      xml[:message].CreateMsg("xmlns:message" => "urn:messages.ws.rightnow.com/v1_4") do
+        xml[:message].RNObjects("xsi:type" => "object:Contact", "xmlns:object" => "urn:objects.ws.rightnow.com/v1_4", "xmlns:base" => "urn:base.ws.rightnow.com/v1_4") do
           # TODO: what if no email is provided?
           # we should be providing a default email address in the #on_message method
           xml[:base].ID("xsi:type" => "ChainSourceID", "id" => "0", "variableName" => "MyNewContact")
@@ -92,9 +92,9 @@ class RightNow::Objects::Contact < RightNow::RNObject
 
   def find_contact
     Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml.QueryObjects("xmlns" => "urn:messages.ws.rightnow.com/v1_2") do
+      xml.QueryObjects("xmlns" => "urn:messages.ws.rightnow.com/v1_4") do
         xml.Query("SELECT Contact FROM Contact c WHERE c.Emails.EmailList.Address = '#{email}' ORDER BY id ASC LIMIT 1")
-        xml.ObjectTemplates("xmlns:object" => "urn:objects.ws.rightnow.com/v1_2", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Contact") do
+        xml.ObjectTemplates("xmlns:object" => "urn:objects.ws.rightnow.com/v1_4", "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance", "xsi:type" => "object:Contact") do
           xml[:object].Emails
         end
         xml.PageSize("100")
